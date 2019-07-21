@@ -1,0 +1,17 @@
+---
+- name: configure samba server
+  hosts: Samba 
+  user: ansible
+  become: true
+
+  pre_tasks:
+    - debug:
+        msg: 'Beginning samba server configuration.'
+
+  roles:
+    - samba
+
+  post_tasks:
+    - debug:
+        msg: 'Samba server has been configured.'
+

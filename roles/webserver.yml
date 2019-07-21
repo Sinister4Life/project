@@ -1,0 +1,22 @@
+---
+- name: Apache HTTP Installation
+  hosts: all
+  remote_user: ansible
+  become: yes
+
+  tasks:
+ 
+  - name: httpd inst
+    yum:
+      name: httpd
+      state: latest
+      tags: install http
+
+  - name: deploy index.html into $HOSTNAME
+    copy: src=ftp://192.168.45.17/pub/index.html dest=/var/www/html/index.html
+
+  - name: start ntp
+    service:
+      name: httpd
+      state: restarted
+      enabled: true

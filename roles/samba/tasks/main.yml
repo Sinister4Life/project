@@ -1,0 +1,74 @@
+---
+- name: install initial packages on all boxes
+  hosts: all
+  remote_user: ansible
+  become: yes
+  
+  tasks:
+  - name: install all initial packages
+    yum:
+      name: ['samba', 'samba-common', 'samba-client']
+      state: latest
+  
+  - name: Put SELinux in permissive mode, logging actions that would be blocked.
+    selinux:
+      policy: targeted
+      state: permissive	
+
+
+- firewalld:
+    service: samba
+    permanent: yes
+    state: enabled
+
+- name: Bounce firewalld
+  service:
+    name=firewalld 
+    state=restarted
+
+
+- name: Creates directory to share files through Samba
+  file:
+    path: /sambashare
+    state: directory
+    owner: 777
+    mode: 0775
+
+
+- name: Create file
+  file:
+    path: /sambashare/test
+    owner: admin
+    group: admin
+    mode: 0644
+
+- name: Edit config file smb.conf
+  template:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+    mode: 0644
+
+- name: Add the user 
+  user:
+    name: admin
+    comment: samba admin
+    group: admin
+
+
+- name: Configure Samba users.
+  shell: >
+    (pdbedit --user=admin 2>&1 > /dev/null)
+    || (echo '{{ item.password }}'; echo '{{ item.password }}')
+    | smbpasswd -s -a {{ item.admin }}
+  register: smbpasswd
+  changed_when: "'Added user' in smbpasswd.stdout"
+  with_items: "{{ samba_users }}"
+  loop_control:
+    label: "{{ item.admin }}"
+
+
+- name: start and enable smb & nmb
+  service:
+    name: ['smb', 'nmb']
+    state: started
+    enabled: true 

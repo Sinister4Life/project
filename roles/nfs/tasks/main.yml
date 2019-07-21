@@ -1,0 +1,55 @@
+---
+# tasks file for nfs
+#
+#
+- name: install nfs-utils
+  yum:
+    name:  nfs-utils
+    state: latest
+
+- name: setup firewall
+  firewalld:
+    service: mountd, rpc-bind, nfs
+    permanent: yes
+    state: enabled
+    service: rpc-bind
+    permanent: yes
+    state: enabled
+    service: nfs
+    permanent: yes
+    state: enabled
+
+- name: start and enable rpcbind and nfs service
+  service:
+    name: rpcbind
+    state: started
+    enabled: true
+    name: nfs
+    state: started
+    enabled: true
+    name: nfs-server
+    state: started
+    enabled: true
+    name: nfs-lock
+    state: started
+    enabled: true
+    name: nfs-idmap
+    state: started
+    enabled: true
+
+# Create the share directory
+- file:
+    path: /share
+    state: directory
+    mode: 0755
+
+- name: template exports file
+  template:
+    src: exports
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - exportfs
+
