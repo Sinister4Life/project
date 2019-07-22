@@ -1,0 +1,25 @@
+---
+- name: PXE server Installation/Configuration CentOS 7
+  hosts: kickstart
+  remote_user: yes
+  become: true  
+ 
+  tasks:
+  - name: Installing PXE packages
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - dhcp
+      - tftp
+      - tftp-server
+      - syslinux
+      - vsftpd
+      - xinetd
+
+   - name: Configuring DHCP file
+     shell: |
+        sudo cd /etc/dhcp
+        sudo echo "#DHCP Server Configuration file.\nddns-update-style interim;\nignore client-updates;\nauthoritative;\nallow booting;\nallow bootp;\nallow unknown-clients;
+        sudo 
+        

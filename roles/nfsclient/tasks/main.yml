@@ -1,38 +1,34 @@
 ---
 # tasks file for nfsclient
-  - name: configure nfs clients
-    hosts: all
-    user: ansible
-    become: true
+  - name: install nfs-utils
+    yum:
+      name: nfs-utils
+      state: latest
 
-    roles:
-      - nfs
+  - name: start and enable services
+    service:
+      name: rpcbind
+      state: started
+      enabled: yes
+      name: nfs-server
+      state: started
+      enabled: yes
+      name: nfs-lock
+      state: started
+      enabled: yes
+      name: nfs-idmap
+      state: started
+      enabled: yes
 
-    - name: install nfs-utils
-      yum:
-        name:  
-          - nfs-utils
-        state: latest
+  - name: create share dir
+    file:
+      path: /share
+      state: directory
+      mode: 0755
 
-    - name: start and enable services
-      service:
-        name:
-          - rpcbind
-          - nfs-server
-          - nfs-lock
-          - nfs-idmap
-        state: started
-        enabled: yes
-
-    - name: create share dir
-      file:
-        path: /share
-        state: directory
-        mode: 0755
-
-    - name: mount nfs dir
-      mount:
-        path: /share
-        src: prdx-nfs15:/share
-        fstype: nfs
-        state: present
+  - name: mount nfs dir
+    mount:
+      path: /share
+      src: prdx-nfs15:/share
+      fstype: nfs
+      state: present

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo chmod +x autofs
+sudo yum -y install autofs
+sudo echo /shares /etc/auto.demo >> /etc/auto.master.d/demo.autofs
+sudo echo work -rw,sync $HOSTNAME:/shares/work
+sudo systemctl enable autofs && sudo systemctl start autofs

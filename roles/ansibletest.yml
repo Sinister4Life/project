@@ -1,0 +1,38 @@
+---
+- name: Apache HTTP Installation
+  hosts: Webservers
+  remote_user: ansible
+  become: yes
+
+  tasks:
+ 
+  - name: httpd inst
+    yum:
+      name: httpd
+      state: latest
+
+  - name: install selinux python bindings for cent6
+    yum:
+      name: libselinux-python
+      state: latest
+
+  - name: deploy apache html into $HOSTNAME
+    copy: 
+      src=files/index.html 
+      dest=/var/www/html/index.html
+
+  - name: configure conf file
+    shell: ip a | grep inet | cut -d " " -f6 | grep 192* > var; cat /etc/redhat-release | grep -wF 6 > var2; if [ "$var2" = "6" ]; then echo "ServerName $var" >> httpd.conf; else echo "ServerName $HOSTNAME >> httpd.conf; fi;
+    args:
+      chdir: /etc/httpd/conf/
+      executable: /bin/bash
+
+  - name: reload httpd
+    service:
+      name: httpd
+      state: reloaded
+ 
+  - name: restart service
+    service:
+      name: httpd
+      state: restarted

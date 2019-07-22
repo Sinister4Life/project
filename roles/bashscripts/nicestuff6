@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sudo chmod +x nicestuff
+sudo setenforce 0
+sudo yum install -y ntp wget bind-utils man man-pages mlocate sysstat
+sudo wget ftp://192.168.45.17/pub/conffiles/ntp.conf
+sudo mv -f ntp.conf /etc/ntp.conf
+#sudo firewall-cmd --add-service={ntp,rpc-bind,nfs} --permanent 
+#sudo firewall-cmd --reload
+sudo timedatectl set-ntp true
+sudo ntpd -u 192.168.45.10
+sudo service ntpd start && chkconfig ntpd on
+sudo useradd -p $(openssl passwd password) ansible
+sudo echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo echo $'[localrepo]\nname=localrepo\nbaseurl=ftp://192.168.45.17/pub/6localrepo\ngpgcheck=0\nenabled=1' > /etc/yum.repos.d/local.repo
+
+# Generate ssh keys for ansible
+sudo -i -u ansible bash << EOF
+yes y | ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null
+EOF

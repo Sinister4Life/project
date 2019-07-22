@@ -1,0 +1,10 @@
+---
+  - name: configure nfs clients
+    hosts: all
+    user: ansible
+    become: true
+
+    roles:
+    - nfsclient 
+
+

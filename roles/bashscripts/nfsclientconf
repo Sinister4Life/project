@@ -1,0 +1,13 @@
+#!/bin/bash
+
+chmod +x nfsclientconf
+yum install -y nfs-utils nfs-utils-lib
+systemctl enable rpcbind    &&  systemctl start rpcbind
+systemctl enable nfs-server &&  systemctl start nfs-server
+systemctl enable nfs-lock   &&  systemctl start nfs-lock
+systemctl enable nfs-idmap  &&  systemctl start nfs-idmap
+mkdir /clientshare
+mount -t nfs nfs:/var/nfsshare /clientshare
+cat /etc/fstab >> prdx-nfs15:/var/nfsshare      /clientshare     nfs      rw,sync,hard,intr      0 0
+mount
+mount -a

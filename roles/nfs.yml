@@ -9,7 +9,7 @@
         msg: 'Beginning nfs server configuration.'
 
   roles:
-    - nfs
+  - nfs
 
   post_tasks:
     - debug:

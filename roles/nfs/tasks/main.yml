@@ -7,26 +7,33 @@
     name:  nfs-utils
     state: latest
 
-- name: setup firewall
-  firewalld:
-    service: 
-      - mountd
-      - rpc-bind
-      - nfs
-    permanent: yes
-    state: enabled
+#- name: setup firewall
+#  firewalld:
+#    service: 
+#      - mountd
+#      - rpc-bind
+#      - nfs
+#    permanent: yes
+#    state: enabled
 
 - name: start and enable rpcbind and nfs service
   service:
-    name: 
-      - rpcbind
-      - nfs
-      - nfs-server
-      - nfs-lock
-      - nfs-idmap
+    name: rpcbind
     state: started
     enabled: true
-    
+    name: nfs
+    state: started
+    enabled: true
+    name: nfs-server
+    state: started
+    enabled: true
+    name: nfs-lock
+    state: started
+    enabled: true
+    name: nfs-idmap
+    state: started
+    enabled: true
+   
 - name: create nfsnobody user
   user:
     name: nfsnobody
