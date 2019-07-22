@@ -9,38 +9,35 @@
 
 - name: setup firewall
   firewalld:
-    service: mountd, rpc-bind, nfs
-    permanent: yes
-    state: enabled
-    service: rpc-bind
-    permanent: yes
-    state: enabled
-    service: nfs
+    service: 
+      - mountd
+      - rpc-bind
+      - nfs
     permanent: yes
     state: enabled
 
 - name: start and enable rpcbind and nfs service
   service:
-    name: rpcbind
+    name: 
+      - rpcbind
+      - nfs
+      - nfs-server
+      - nfs-lock
+      - nfs-idmap
     state: started
     enabled: true
-    name: nfs
-    state: started
-    enabled: true
-    name: nfs-server
-    state: started
-    enabled: true
-    name: nfs-lock
-    state: started
-    enabled: true
-    name: nfs-idmap
-    state: started
-    enabled: true
+    
+- name: create nfsnobody user
+  user:
+    name: nfsnobody
+    group: nfsnobody
 
-# Create the share directory
-- file:
+- name: Create the share directory
+  file:
     path: /share
     state: directory
+    owner: nfsnobody
+    group: nfsnobody
     mode: 0755
 
 - name: template exports file
