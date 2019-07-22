@@ -1,6 +1,6 @@
 ---
 - name: Apache HTTP Installation
-  hosts: all
+  hosts: Webservers
   remote_user: ansible
   become: yes
 
@@ -10,13 +10,24 @@
     yum:
       name: httpd
       state: latest
-      tags: install http
 
-  - name: deploy index.html into $HOSTNAME
-    copy: src=ftp://192.168.45.17/pub/index.html dest=/var/www/html/index.html
+  - name: deploy apache html into $HOSTNAME
+    copy: 
+      src=files/index.html 
+      dest=/var/www/html/index.html
 
-  - name: start ntp
+  - name: configure conf file
+    shell: echo "ServerName $HOSTNAME" >> httpd.conf
+    args:
+      chdir: /etc/httpd/conf/
+      executable: /bin/bash
+
+  - name: reload httpd
+    service:
+      name: httpd
+      state: reloaded
+ 
+  - name: restart service
     service:
       name: httpd
       state: restarted
-      enabled: true
