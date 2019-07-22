@@ -1,0 +1,92 @@
+---
+  - name: Playbook for configuring nagios client(s)
+    hosts: nagios-client
+    remote_user: ansible
+    
+    vars:
+      nagios_server: 192.168.<yambe:breadcrumb self="CentOS 7.x nagios server and client configuration ansible playbook">CentOS 7.x nagios|CentOS 7.x nagios</yambe:breadcrumb>45.31
+
+    tasks:
+    - name: Install epel-release repository
+      yum: name=epel-release state=present
+    
+    - name: Install nrpe, nagios-plugins-all
+      yum: name={{item}} state=present
+      with_items:
+        - nrpe
+        - nagios-plugins-all
+        - openssl
+
+    - name: Configure nagios server IP in nrpe configuration file
+      lineinfile: 
+        dest: /etc/nagios/nrpe.cfg
+        regexp: allowed_hosts=
+        line: allowed_hosts=127.0.0.1,{{nagios_server}} 
+
+    - name: Start nrpe service and enable it on startup
+      service: name=nrpe state=restarted enabled=yes
+
+  
+  - name: Playbook for configuring nagios server including clients and client services monitoring
+    hosts: nagios-server
+    remote_user: root
+
+    #vars:
+     # nagios_alert_email_id: admin@192.168.45.16  
+      #nagiosadmin_password: nagiosadmin
+      #nagios_client_details:
+       # - { hostname: "test1", alias: "test1", address: 192.168.122.210, services: [ "ping", "ssh" ] }  
+        #- { hostname: "web1", alias: "web1", address: 192.168.122.246, services: [ "ping", "ssh", "http", "nrpe_check_load" ] }  
+        #- { hostname: "windows10", alias: "windows10", address: 192.168.2.32, services: [ "ping", "nrpe_alias_cpu" ] }  
+
+
+    tasks:
+    - name: Install epel-release repository
+      yum: name=epel-release state=present
+    
+    - name: Install nagios, nagios-plugins-all and nrpe packages
+      yum: name={{item}} state=present
+      with_items:
+      - nagios
+      - nagios-plugins-all
+      - nrpe 
+      - nagios-plugins-nrpe
+
+    - name: Configure desried email ID in contacts
+      lineinfile: 
+        dest: /etc/nagios/objects/contacts.cfg
+        regexp: email
+        line: email {{nagios_alert_email_id}} 
+
+    - name: Copy commands.cfg file with check_nrpe command
+      copy: src=commands.cfg dest=/etc/nagios/objects/commands.cfg owner=nagios group=nagios mode=755
+
+    - name: Create nagiosadmin user for httpd access
+      shell: htpasswd -cb /etc/nagios/passwd nagiosadmin {{nagiosadmin_password}}
+
+    - name: Make sure httpd is installed
+      yum: name=httpd state=present
+
+    - name: Start nagios, httpd services and enable them on startup
+      service: name={{item}} state=restarted enabled=yes
+      with_items:
+        - httpd
+        - nagios
+
+    - name: Set setuid permissions on /usr/bin/ping to allow nagios user to execute ping
+      file: dest=/usr/bin/ping mode=04755
+
+    - name: Configure nagios to use clients.conf file
+      lineinfile: 
+        dest: /etc/nagios/nagios.cfg
+        insertafter: cfg_dir=.etc.nagios.conf.d
+        line: cfg_file=/etc/nagios/servers/clients.conf
+
+    - name: Create servers folder
+      file: dest=/etc/nagios/servers owner=nagios group=nagios mode=755 state=directory
+ 
+    - name: Configure server to monitor clients
+      template: src=nagios-clients.j2 dest=/etc/nagios/servers/clients.conf owner=nagios group=nagios mode=755
+
+    - name: Restart nagios on server to use new configuration
+      service: name=nagios state=restarted   
