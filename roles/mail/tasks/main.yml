@@ -1,7 +1,8 @@
 ---
   - name: Script for configuring complete mail server
     hosts: Mail
-    remote_user: root
+    remote_user: ansible
+    become: true
 
     vars:
       myhostname: prdx-mail15.ziyotek5.local
@@ -91,6 +92,3 @@
     handlers:
     - name: restart httpd
       service: name=httpd state=restarted   
-
-<?php
-
