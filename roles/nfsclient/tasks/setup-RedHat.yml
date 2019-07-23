@@ -4,4 +4,10 @@
     name: nfs-idmap
     state: started
     enabled: yes
+    name: nfs-lock
+    state: started
+    enabled: yes
+    name: nfs-server
+    state: started
+    enabled: yes
 

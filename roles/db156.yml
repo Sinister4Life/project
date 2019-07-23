@@ -1,0 +1,26 @@
+---
+- name: Install MySQL database server
+  hosts: test
+  become: yes
+  become_method: sudo
+  gather_facts: true
+  tags: [database]
+  tasks:
+        - name: Update the software package repository
+          yum:
+                update_cache: yes
+
+        - name: Install MySQL
+          package:
+                name: "{{ item }}"
+                state: latest
+
+          with_items:
+              - mysql-community-server*
+              - mySQL-python
+
+        - name: copy my.cnf
+          copy:
+            src: ../files/etc/my.cnf
+            dest: /etc/my.cnf
+            mode: 0644
