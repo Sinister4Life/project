@@ -29,6 +29,6 @@
   - name: mount nfs dir
     mount:
       path: /share
-      src: prdx-nfs15:/share
+      src: prdx-nfs15:/var/share
       fstype: nfs
       state: present

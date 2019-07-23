@@ -1,0 +1,17 @@
+---
+- name: configure nfs server
+  hosts: NFS
+  user: ansible
+  become: true
+
+  pre_tasks:
+    - debug:
+        msg: 'Beginning nfs server configuration.'
+
+  roles:
+  - NFS
+
+  post_tasks:
+    - debug:
+        msg: 'NFS server has been configured.'
+

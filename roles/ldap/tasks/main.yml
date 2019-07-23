@@ -1,3 +1,23 @@
 ---
 # tasks file for ldap
+- name: install ldap
+  yum:
+    name:
+    - openldap 
+    - openldap-clients 
+    - openldap-servers 
+    - openssl
+    state: latest
+
+- name: start services
+  service:
+    name: slapd
+    state: started
+    enabled: yes
+
+- name: create ldif files
+  template:
+   src: hdb.ldif
+   dest: /root/hdb.ldif
+
 

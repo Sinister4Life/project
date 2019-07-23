@@ -1,11 +1,11 @@
 ---
   - name: Playbook for configuring nagios client(s)
-    hosts: Nagios
+    hosts: test
     remote_user: ansible
     become: true
     
     vars:
-      nagios_server: 192.168.<yambe:breadcrumb self="CentOS 7.x nagios server and client configuration ansible playbook">CentOS 7.x nagios|CentOS 7.x nagios</yambe:breadcrumb>45.31
+      nagios_server: 192.168.<yambe:breadcrumb self="CentOS 7.x nagios server and client configuration ansible playbook">CentOS 7.x nagios|CentOS 7.x nagios</yambe:breadcrumb>45.230
 
     tasks:
     - name: Install epel-release repository
@@ -29,7 +29,7 @@
 
   
   - name: Playbook for configuring nagios server including clients and client services monitoring
-    hosts: Nagios
+    hosts: test
     remote_user: ansible
     become: true
 
@@ -37,7 +37,7 @@
       nagios_alert_email_id: admin@192.168.45.16  
       nagiosadmin_password: nagiosadmin
       nagios_client_details:
-        - { hostname: "test1", alias: "test1", address: 192.168.122.210, services: [ "ping", "ssh" ] }  
+        - { hostname: "test1", alias: "test1", address: 192.168.45.230, services: [ "ping", "ssh" ] }  
         - { hostname: "web1", alias: "web1", address: 192.168.122.246, services: [ "ping", "ssh", "http", "nrpe_check_load" ] }  
         - { hostname: "windows10", alias: "windows10", address: 192.168.2.32, services: [ "ping", "nrpe_alias_cpu" ] }  
 
@@ -82,8 +82,8 @@
      # lineinfile: 
       #  dest: /etc/nagios/nagios.cfg
        # insertafter: cfg_dir=.etc.nagios.conf.d
-       # line: cfg_file=/etc/nagios/servers
-    
+        #line: cfg_file=/etc/nagios/servers
+   
 
     - name: Create servers folder
       file: dest=/etc/nagios/servers owner=nagios group=nagios mode=755 state=directory

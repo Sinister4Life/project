@@ -41,7 +41,7 @@
 
 - name: Create the share directory
   file:
-    path: /share
+    path: /var/share
     state: directory
     owner: nfsnobody
     group: nfsnobody

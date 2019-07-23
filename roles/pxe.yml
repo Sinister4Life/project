@@ -21,5 +21,16 @@
      shell: |
         sudo cd /etc/dhcp
         sudo echo "#DHCP Server Configuration file.\nddns-update-style interim;\nignore client-updates;\nauthoritative;\nallow booting;\nallow bootp;\nallow unknown-clients;
-        sudo 
-        
+        sudo sub=subnet; sed -i "/^$sub/c#$sub/" /etc/httpd/conf/httpd.conf
+        sudo r=range; sed -i "/^$r/c#$r/" /etc/httpd/conf/httpd.conf
+        sudo o=option; sed -i "/^$o/c#$o/" /etc/httpd/conf/httpd.conf
+        sudo d=default-lease-time; sed -i "/^$d/c#$d/" /etc/httpd/conf/httpd.conf
+        sudo m=max-lease-time; sed -i "/^$m/c#$m/" /etc/httpd/conf/httpd.conf
+        sudo echo "#internal subnet for my DHCP Server\nsubnet 192.168.40.0 netmask 255.255.248.0 {\nrange 192.168.45.11 192.168.45.239;\noption domain-name-servers 192.168.45.12;\noption domain-name "ziyotek5.local";\noption routers 192.168.40.1;\noption broadcast-address 192.168.40.255;\ndefault-lease-time 600;\nmax-lease-time 7200;
+        sudo echo "# IP of PXE Server\nnext-server 192.168.45.15;\nfilename "pxelinux.0";\n}
+   
+   - name: Configuring TFTP file
+     shell: |
+        sudo grep disable | sed 's/yes/no/' /etc/xinetd.d/tftp   
+
+
