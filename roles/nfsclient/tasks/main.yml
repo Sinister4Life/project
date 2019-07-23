@@ -1,34 +1,51 @@
 ---
 # tasks file for nfsclient
-  - name: install nfs-utils
-    yum:
-      name: nfs-utils
-      state: latest
+#- name: Include overrides specific to RHEL 7.
+#  include_vars: RedHat-7.yml
+#  when:
+#    - ansible_os_family == 'RedHat'
 
-  - name: start and enable services
-    service:
-      name: rpcbind
-      state: started
-      enabled: yes
-      name: nfs-server
-      state: started
-      enabled: yes
-      name: nfs-lock
-      state: started
-      enabled: yes
-      name: nfs-idmap
-      state: started
-      enabled: yes
 
-  - name: create share dir
-    file:
-      path: /share
-      state: directory
-      mode: 0755
+- name: install nfs-utils
+  yum:
+    name: nfs-utils
+    state: latest
 
-  - name: mount nfs dir
-    mount:
-      path: /share
-      src: prdx-nfs15:/var/share
-      fstype: nfs
-      state: present
+- name: start and enable services
+  service:
+    name: rpcbind
+    state: started
+    enabled: yes
+    name: nfs-server
+    state: started
+    enabled: yes
+    name: nfs-lock
+    state: started
+    enabled: yes
+- include_tasks: setup-RedHat.yml
+  when: 
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution_major_version == "7"
+
+
+- name: create share dir
+  file:
+    path: /share
+    state: directory
+#      mode: 0755
+
+- name: mount nfs dir
+  mount:
+    path: /share
+    src: prdx-nfs15:/var/share
+    fstype: nfs
+    state: present
+
+- name: mount dir
+  command: mount -t nfs nfs:/var/share /share
+
+- name: edit fstab
+  shell: cat /etc/fstab >> prdx-nfs15:/var/share      /share     nfs      rw,sync,hard,intr      0 0
+- name: mount
+  command: mount -a
+ 

@@ -1,7 +1,7 @@
 ---
 # tasks file for jenkins
-- name: blababka
-  hosts: test
+- name: blabla
+  hosts: prdx-jenkins15.ziyotek5.local
   remote_user: ansible
   become: true
   

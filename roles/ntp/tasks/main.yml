@@ -1,0 +1,27 @@
+---
+#- name: install initial packages on all boxes
+#  hosts: timeservers 
+#  remote_user: ansible
+#  become: yes
+  
+#- tasks:
+  - name: remove chrony package from all clients in the system
+    yum:
+      name: chrony
+      state: absent
+    
+  - name: check/install ntp package
+    yum: 
+      name: ntp
+      state: present
+
+  - name: deploy ntp.conf to all boxex
+    template:
+      src: ntp.conf
+      dest: /etc/ntp.conf
+
+  - name: start ntp
+    service: 
+     name: ntpd
+     state: restarted
+     enabled: yes

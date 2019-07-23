@@ -1,0 +1,7 @@
+---
+- name: start nfs idmap service for rh7     
+  service:
+    name: nfs-idmap
+    state: started
+    enabled: yes
+

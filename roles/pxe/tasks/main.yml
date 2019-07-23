@@ -1,0 +1,22 @@
+---
+- name: PXE Package Install
+  hosts: test
+  remote_user: ansible
+  become: true
+
+  tasks: 
+   
+  - name: Variable Load In
+    include_vars: {{ variables }}
+    vars:
+      variables:
+        - /ansible/roles/pxe/vars/vpar
+        - /ansible/roles/pxe/vars/vars.sh
+
+  - name: DHCP Configuration Deployment
+    shell: bash dhcpd.sh
+    args:
+      chdir: /ansible/roles/tasks/
+      executable: /bin/bash
+
+  

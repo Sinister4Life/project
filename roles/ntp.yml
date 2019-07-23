@@ -1,31 +1,9 @@
 ---
 - name: install initial packages on all boxes
-  hosts: all
+  hosts: timeservers 
   remote_user: ansible
   become: yes
-  
-  tasks:
-  - name: remove chrony package from all clients in the system
-    yum:
-      name: chrony
-      state: absent
-      tags: remove_chrony,start_ntp
-    
-  - name: check/install ntp package
-    yum: 
-      name: ntp
-      state: present
-      tags: install_ntp,start_ntp
+ 
+  roles: 
+    - ntp
 
-  - name: deploy ntp.conf to all boxex
-    template:
-      src: /ansible/templates/ntp.conf.j2
-      dest: /etc/ntp.conf
-    notify: start_restart_ntp
-    tags: copy_ntp_conf,start_ntp
-
-  - name: start ntp
-    service: 
-     name: ntp 
-     state: restarted
-     enabled: yes
