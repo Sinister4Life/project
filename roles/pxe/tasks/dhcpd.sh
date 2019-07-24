@@ -53,4 +53,4 @@ filename "pxelinux.0";
 }
 EOF
 
-
+sed -i 's/no/yes' /etc/xinetd.d/tftp

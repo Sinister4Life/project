@@ -1,6 +1,6 @@
 ---
-- name: Install MySQL database server
-  hosts: test
+- name: Install mysql-server mysql
+  hosts: database6
   become: yes
   become_method: sudo
   gather_facts: true
@@ -11,16 +11,20 @@
                 update_cache: yes
 
         - name: Install MySQL
-          package:
-                name: "{{ item }}"
+          yum:
+                name: mysql-server, libselinux-python 
                 state: latest
-
-          with_items:
-              - mysql-community-server*
-              - mySQL-python
 
         - name: copy my.cnf
           copy:
-            src: ../files/etc/my.cnf
+            src: /ansible/roles/files/etc/my.cnf
             dest: /etc/my.cnf
             mode: 0644
+       
+        - name: enable mysql
+          service:
+            name: mysqld
+            state: restarted
+            enabled: yes
+
+
