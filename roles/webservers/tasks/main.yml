@@ -1,0 +1,31 @@
+---
+  - name: httpd inst
+    yum:
+      name: httpd
+      state: latest
+
+  - include_tasks: cent7.yml
+    when: 
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution_major_version == "7"
+  - include_tasks: cent6.yml
+    when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution_major_version == '6'
+
+  - name: deploy apache html into $HOSTNAME
+    template: 
+      src: index.html 
+      dest: /var/www/html/index.html
+
+  - name: configure conf file
+    shell: echo "ServerName $HOSTNAME" >> httpd.conf
+    args:
+      chdir: /etc/httpd/conf/
+      executable: /bin/bash
+
+  - name: reload httpd
+    service:
+      name: httpd
+      state: reloaded
+      enabled: yes 

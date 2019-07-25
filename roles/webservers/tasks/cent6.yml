@@ -1,0 +1,11 @@
+---
+  - name: install selinux python bindings for cent6
+    yum:
+      name: libselinux-python
+      state: latest
+
+  - name: firewalls ruin everything 
+    service:
+      name: iptables
+      state: stopped
+#

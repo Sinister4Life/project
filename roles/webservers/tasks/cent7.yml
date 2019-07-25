@@ -1,0 +1,6 @@
+---
+  - name: firewalls ruin everything 
+    service:
+      name: firewalld
+      state: stopped
+#

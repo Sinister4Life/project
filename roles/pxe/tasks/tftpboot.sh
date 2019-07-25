@@ -6,7 +6,7 @@ yum install -y tftp tftp-server syslinux vsftpd xinetd;
 sed -i 's/no/yes' /etc/xinetd.d/tftp;
 cp -vp /usr/share/syslinux/{pxelinux.0,menu.c32,memdisk,mboot.c32,chain.c32} /var/lib/tftpboot;
 mkdir -p /var/lib/tftpboot/pxelinux.0 && mkdir -p /var/lib/tftpboot/networkboot;
-mount -o loop ftp://192.168.45.17/pub/CentOS7/CentOS-7-x86_64-DVD-1810.iso /mnt/;
+mount -o loop ftp://192.168.45.151/pub/CentOS7/CentOS-7-x86_64-DVD-1810.iso /mnt/;
 cp -av /mnt/* /var/ftp/pub/;
 umount /mnt/;
 
@@ -73,17 +73,17 @@ man-pages
 %end
 EOF
 
-sshpass -p password scp -r centos7.cfg root@192.168.45.17:/var/ftp/pub/CentOS7/;
+sshpass -p password scp -r centos7.cfg root@192.168.45.151:/var/ftp/pub/CentOS7/;
 
 cat << EOF > /var/lib/tftpboot/pxelinux.cfg/default
 default menu.c32
 prompt 0
-timeout 30
+timeout 7
 MENU TITLE ######## PXE Menu #########
 LABEL 1
-MENU LABEL ^1) Install CentOS 7
-KERNEL /networkboot/vmlinuz
-APPEND initrd=/networkboot/initrd.img inst.repo=ftp://192.168.45.17/pub/CentOS7/ ks=ftp://192.168.45.17/pub/CentOS7/centos7.cfg
+MENU LABEL ^1) Install CentOS7
+KERNEL /var/lib/tftpboot/networkboot/vmlinuz
+APPEND initrd=/var/lib/tftpboot/networkboot/initrd.img inst.repo=ftp://192.168.45.151/pub/CentOS7/ ks=ftp://192.168.45.151/pub/CentOS7/centos7.cfg
 EOF
 
 systemctl status firewalld | grep -i active | awk '{print $2;}' > status;
