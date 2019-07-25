@@ -1,0 +1,8 @@
+---
+  - name: build haproxy server
+    hosts: Load-Balancer
+    user: ansible
+    become: true
+    
+    roles: 
+    - haproxy

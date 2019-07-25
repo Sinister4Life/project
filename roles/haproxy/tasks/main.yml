@@ -1,0 +1,41 @@
+---
+# tasks file for haproxy
+
+- name: Install haproxy
+  yum:
+    name: 
+    - haproxy
+    - libselinux-python
+    state: latest
+
+- name: Create directories for haproxy
+  file:
+    path: /etc/haproxy
+    state: directory
+    path: /var/lib/haproxy
+    state: directory
+    path: /var/lib/haproxy/stats
+    state: file
+  file:
+    src: /usr/sbin/haproxy
+    dest: /usr/local/sbin/haproxy
+    state: link
+
+- name: configure firewall
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 8181
+    jump: ACCEPT
+
+- name:
+  template:
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+
+- name: Start and enable service
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
+
