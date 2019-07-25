@@ -1,6 +1,6 @@
 ---
 - name: PXE Package Install
-  hosts: test
+  hosts: testpxe
   remote_user: ansible
   become: true
 
@@ -19,4 +19,4 @@
       chdir: /ansible/roles/tasks/
       executable: /bin/bash
 
-  
+  - name: 
