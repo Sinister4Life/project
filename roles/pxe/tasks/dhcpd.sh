@@ -50,13 +50,13 @@ max-lease-time 7200;
 authoritative;
 
 #internal subnet for my DHCP Server
-subnet 192.168.40.0 netmask 255.255.248.0 {
+subnet 192.168.45.0 netmask 255.255.248.0 {
 range 192.168.45.20 192.168.45.239;
 option domain-name-servers 192.168.45.12;
 option domain-name "ziyotek5.local";
 option routers 192.168.40.1;
 range 192.168.45.20 192.168.45.239;
-option broadcast-address 192.168.40.255;
+option broadcast-address 192.168.45.239;
 default-lease-time 600;
 max-lease-time 7200;
 }

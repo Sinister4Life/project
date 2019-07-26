@@ -3,12 +3,13 @@
 #Dancing with the Wolves woooo-woooo-wooo skadooshhh
 setenforce 0;
 yum install -y tftp tftp-server syslinux vsftpd xinetd;
+mv CentOS7 /var/ftp/pub/
 sed -i 's/no/yes' /etc/xinetd.d/tftp;
 cp -vp /usr/share/syslinux/{pxelinux.0,menu.c32,memdisk,mboot.c32,chain.c32} /var/lib/tftpboot;
 mkdir -p /var/lib/tftpboot/pxelinux.0 && mkdir -p /var/lib/tftpboot/networkboot;
-mount -o loop ftp://192.168.45.151/pub/CentOS7/CentOS-7-x86_64-DVD-1810.iso /mnt/;
-cp -av /mnt/* /var/ftp/pub/;
-umount /mnt/;
+#mount -o loop /var/ftp/pub/CentOS7/CentOS-7-x86_64-DVD-1810.iso /mnt/;
+#cp -av /mnt/* /var/ftp/pub/;
+#umount /mnt/;
 
 openssl passwd -1 password > passgen;
 cat << EOF > centos7.cfg
@@ -73,7 +74,7 @@ man-pages
 %end
 EOF
 
-sshpass -p password scp -r centos7.cfg root@192.168.45.151:/var/ftp/pub/CentOS7/;
+#sshpass -p password scp -r centos7.cfg root@192.168.45.151:/var/ftp/pub/CentOS7/;
 
 cat << EOF > /var/lib/tftpboot/pxelinux.cfg/default
 default menu.c32

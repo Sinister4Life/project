@@ -1,41 +1,46 @@
 ---
 - name: PXE Configuration with DHCP
-  hosts: testpxe
+  hosts: tpxe
   remote_user: ansible
   become: true
 
   tasks:  
 
-
   - name: Copy dhcp script from Ansible Server to PXE server
-      tags: sync-push
-      synchronize:
-        src: /ansible/roles/pxe/tasks/dhcpd.sh
-        dest: /root/
-        mode: push
-      delegate_to: test 
-      register: syncfile
+    tags: sync-push
+    synchronize:
+      src: /ansible/roles/pxe/tasks/dhcpd.sh
+      dest: /root/
+      mode: push
+    delegate_to: tpxe 
+    register: syncfile
 
   - name: DHCP Configuration Deployment
-    command: bash /root/dhcpd.sh
+    shell: bash dhcpd.sh
+    args:
+      executable: /bin/bash
+      chdir: /root/
 
 - name: TFTPBoot Configuration
-  hosts: testftp
+  hosts: tftp
   remote_user: ansible
   become: true
   
   tasks:
 
   - name: Copy tftpboot script from Ansible Server 
-      tags: sync-push
-      synchronize:
-        src: /ansible/roles/pxe/tasks/tftpboot.sh
-        dest: /root/
-        mode: push
-      delegate_to: testftp
-      register: syncfile
+    tags: sync-push
+    synchronize:
+      src: /ansible/roles/pxe/tasks/tftpboot.sh
+      dest: /root/
+      mode: push
+    delegate_to: tftp
+    register: syncfile
 
 
   - name: TFTPBOOT Configuration Deployment
-    command: bash /root/tftpboot.sh
-
+    shell: bash tftpboot.sh
+    args:
+      executable: /bin/bash
+      chdir: /root/
+...
