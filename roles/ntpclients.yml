@@ -1,0 +1,8 @@
+---
+- name: configure ntp clients
+  hosts: all:!timeservers
+  become_user: ansible
+  become: true
+  
+  roles:
+  - ntpclients 

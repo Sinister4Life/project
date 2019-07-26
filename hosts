@@ -1,0 +1,114 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+## [dbservers]
+## 
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+
+[nameservers]
+prdx-nsmaster15.ziyotek5.local
+prdx-nsworker15.ziyotek5.local
+prdx-nsworker25.ziyotek5.local
+
+[timeservers]
+prdx-ntp15.ziyotek5.local
+prdx-ntp25.ziyotek5.local
+
+[kickstart]
+prdx-pxe15.ziyotek5.local
+
+[Ansible-Master]
+prdx-ansible15.ziyotek5.local
+
+[FTP]
+prdx-ftp15.ziyotek5.local
+
+[NFS]
+prdx-nfs15.ziyotek5.local
+
+[Samba]
+prdx-samba15.ziyotek5.local
+
+[Mail]
+prdx-mail15.ziyotek5.local
+
+[database6]
+prdx-db156.ziyotek5.local
+
+[database7]
+prdx-db157.ziyotek5.local
+
+[Webservers]
+prdx-webserver156.ziyotek5.local
+prdx-webserver157.ziyotek5.local
+prdx-webserver256.ziyotek5.local
+prdx-webserver257.ziyotek5.local
+prdx-webserver356.ziyotek5.local
+prdx-webserver357.ziyotek5.local
+
+[Load-Balancer]
+prdx-haproxy156.ziyotek5.local
+prdx-haproxy157.ziyotek5.local
+
+[Nagios]
+prdx-nagios15.ziyotek5.local
+
+[LDAP]
+prdx-ldap15.ziyotek5.local
+
+[Docker]
+prdx-docker15.ziyotek5.local
+
+[Jenkins]
+prdx-jenkins15.ziyotek5.local
+
+[K8s-Master]
+prdx-kubem15.ziyotek5.local
+
+[K8s-Workers]
+prdx-kubew15.ziyotek5.local
+prdx-kubew25.ziyotek5.local
+
+[test]
+test.ziyotek5.local
+#test6.ziyotek5.local
+
+
+

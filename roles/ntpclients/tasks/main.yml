@@ -1,0 +1,28 @@
+---
+# tasks file for ntpclients
+#
+  - name: disable selinux
+    selinux:
+      policy: targeted
+      state: permissive
+
+  - name: remove chrony package from all clients in the system
+    yum:
+      name: chrony
+      state: absent
+    
+  - name: check/install ntp package
+    yum: 
+      name: ntp
+      state: present
+
+  - name: deploy ntp.conf to all boxes
+    template:
+      src: ntp.conf
+      dest: /etc/ntp.conf
+
+  - name: start ntp
+    service: 
+     name: ntpd
+     state: reloaded
+     enabled: yes 

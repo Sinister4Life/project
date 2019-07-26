@@ -5,7 +5,7 @@
 #  become: yes
   
 #- tasks:
-  - name: remove chrony package from all clients in the system
+  - name: remove chrony package 
     yum:
       name: chrony
       state: absent
@@ -15,7 +15,7 @@
       name: ntp
       state: present
 
-  - name: deploy ntp.conf to all boxex
+  - name: deploy ntp.conf
     template:
       src: ntp.conf
       dest: /etc/ntp.conf
