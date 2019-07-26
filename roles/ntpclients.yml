@@ -1,8 +1,9 @@
 ---
 - name: configure ntp clients
   hosts: all:!timeservers
-  become_user: ansible
+  remote_user: ansible
   become: true
+  become_method: sudo
   
   roles:
   - ntpclients 
