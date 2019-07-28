@@ -1,6 +1,6 @@
 ---
   - name: Playbook for configuring nagios client(s)
-    hosts: prdx-nagios15.ziyotek5.local
+    hosts: prdx-nagios15
     remote_user: ansible
     become: true
     
@@ -29,15 +29,15 @@
 
   
   - name: Playbook for configuring nagios server including clients and client services monitoring
-    hosts: prdx-nagios15.ziyotek5.local
+    hosts: prdx-nagios15
     remote_user: ansible
     become: true
 
-    vars:
-      nagios_alert_email_id: admin@192.168.45.16  
-      nagiosadmin_password: nagiosadmin
-      nagios_client_details:
-        - { hostname: "test1", alias: "test1", address: 192.168.45.31, services: [ "ping", "ssh" ] }  
+    #vars:
+     # nagios_alert_email_id: admin@192.168.45.16  
+      #nagiosadmin_password: nagiosadmin
+      #nagios_client_details:
+       # - { hostname: "test1", alias: "test1", address: 192.168.45.31, services: [ "ping", "ssh" ] }  
 
 
     tasks:

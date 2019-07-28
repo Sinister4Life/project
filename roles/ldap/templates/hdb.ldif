@@ -1,13 +1,11 @@
 
-
-
 dn: olcDatabase={2}hdb,cn=config
 changeType: modify
 replace: olcSuffix
-olcSuffix: dc=ziyotek,dc=local
+olcSuffix: dc=ziyotek5,dc=local
 -
 replace: olcRootDN
-olcRootDN: cn=admin,dc=ziyotek,dc=local
+olcRootDN: cn=admin,dc=ziyotek5,dc=local
 -
 add: olcRootPW
-olcRootPW: {SSHA}VqPJYvSnDoysNlDsJBhgTfuwLjVqljgp
+olcRootPW: {SSHA}M+sdZhFdzSv6ETr2cn/mR84ax/LpUK8V

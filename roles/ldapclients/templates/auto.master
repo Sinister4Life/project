@@ -1,0 +1,2 @@
+/- /etc/auto.share
+/ldap/home auto.home --timeout 60

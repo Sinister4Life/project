@@ -1,0 +1,24 @@
+---
+- hosts: test
+ tasks:
+   - name: upgrade the kernel
+     yum:
+       name: kernel
+       state: latest
+    - name: Check for reboot
+      shell: if [ $(rpm -q kernel|tail -n 1) != kernel-$(uname -r) ]; then echo 'reboot'; else echo 'no'; fi
+      ignore_errors: true
+      register: reboot_hint   
+- hosts: test
+  become: yes
+  tasks:
+    - name: .rpm upgrade server
+      yum: >
+        update_cache=yes
+        name=*
+        state=latest
+        update_cache=yes
+      when: >
+        ansible_distribution == 'CentOS'
+ 
+

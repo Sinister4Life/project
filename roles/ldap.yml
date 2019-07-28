@@ -1,0 +1,55 @@
+---
+- name: LDAP Installation
+  hosts: LDAP
+  remote_user: ansible
+  become: yes
+  roles:
+  - ldap
+  
+  tasks:
+  
+  - name: Needed Package Installation for down below ansible modules
+    yum:
+      name:
+        - pexpect 
+        - python-lib
+        - python
+      state: latest
+    
+  - name: to verify ldap server is configured
+    command: ldapsearch -x -b "dc=ziyotek5,dc=local"
+  
+#{SSHA}M+sdZhFdzSv6ETr2cn/mR84ax/LpUK8V - sha256 password, if someone finds it useful
+
+  - name: to verify base structure
+    expect:
+      command: ldapsearch -x -W -D "cn=admin,dc=ziyotek5,dc=local" -b "dc=ziyotek5,dc=local" "(objectclass=*)"
+      responses:
+       (?!)password: password
+    no_log: true
+  
+  - name: cosine
+    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+ 
+  - name: nis
+    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+
+  - name: inetorgperson
+    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+  
+  - name: epel-release, phpldapadmin, httpd packages installation
+    yum:
+      name:
+        - epel-release
+        - phpldapadmin
+        - httpd
+      state: latest
+
+  - name: Configuring config.php
+    command: chdir=/etc/phpldapadmin {{ item }}
+    with_items: 
+      - grep "\$servers->setValue('server','base',array(''))" 305 | sed 's/\/\///' | sed "s/array('')/array('dc=ziyotek5,cn=local')/"
+      - grep "\$servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com')" 305 | sed 's/^#$*//' | sed 's/'cn=Manager,dc=example,dc=com'/'cn=admin,dc=ziyotek5,dc=local'/'
+      - grep 
+   !!!!!!! PLEASE DON'T TOUCH PLEASE I BEG YOU !!!!!!!  
+     

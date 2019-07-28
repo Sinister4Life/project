@@ -1,0 +1,4 @@
+// $servers->setValue('server','base',array('')); 305
+#  $servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com');
+// $servers->setValue('login','attr','dn');
+$servers->setValue('login','attr','uid');

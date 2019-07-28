@@ -29,11 +29,11 @@
 #- name: edit fstab
 #  shell:  echo 'prdx-nfs15:/var/share      /share     nfs      rw,sync,intr,soft,timeo=100      0 0' >> /etc/fstab
 
-- name: unmount share dir if already mounted, hopefully fixes bug
+#- name: unmount share dir if already mounted, hopefully fixes bug
 #  command: umount -l /share
-  mount:
-    path: /share
-    state: unmounted
+#  mount:
+#    path: /share
+#    state: unmounted
 
 #- name: create share dir
 #  file:

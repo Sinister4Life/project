@@ -7,11 +7,27 @@
     - openldap-clients 
     - openldap-servers 
     - openssl
+    - expect
+    - pexpect
+    - httpd
     state: latest
+
+#- name: Automatically insert password to slappasswd
+#  expect:
+#    command: /bin/bash -c '/usr/sbin/slappasswd | tee /passhash'
+#    responses:
+#     (?i*)password: 'password'
+#  no_log: true
+
+# Run slappasswd manually and paste the hashed version into your ldif
+# files as olcRootPW
 
 - name: start services
   service:
     name: slapd
+    state: started
+    enabled: yes
+    name: httpd
     state: started
     enabled: yes
 
@@ -19,5 +35,47 @@
   template:
    src: hdb.ldif
    dest: /root/hdb.ldif
+
+#- name: run ldapmodify
+#  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/hdb.ldif
+#  args:
+#    executable: /bin/bash
+
+- name: configure monitoring privs
+  template:
+    src: monitor.ldif
+    dest: /root/monitor.ldif
+
+- name: run ldapmodify
+  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/monitor.ldif
+  args:
+    executable: /bin/bash
+
+#- name: listen on SSL
+#  template:
+#    src: ldapconfig
+#    dest: /etc/sysconfig/ldap
+
+#- name: generate ssl certificate
+#  script: /ansible/roles/ldap/templates/ssl.sh
+
+#- name: deal with keys
+#  template:
+#    src: key.ldif
+#   dest: /root/key.ldif
+
+#- name: run ldapmodify
+#  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f key.ldif
+#  args:
+#    executable: /bin/bash
+
+#- name: copy cert
+#  command: cp /etc/openldap/certs/cacert.pem /var/www/html/
+
+- name: restart slapd
+  service:
+    name: slapd
+    state: restarted
+    enabled: yes
 
 

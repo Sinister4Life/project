@@ -1,0 +1,1 @@
+* -fstype=autofs,rw,sync prdx-nfs15:/var/share/home/&

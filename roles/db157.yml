@@ -1,0 +1,33 @@
+---
+- name: Install mariabd
+  hosts: database7
+  become: yes
+  become_method: sudo
+  gather_facts: true
+  tags: [database]
+  tasks:
+        - name: Update the software package repository
+          yum:
+                update_cache: yes
+
+        - name: Install mariabd repo
+          yum_repository:
+            name: mariadb
+            description: mariadb repo
+            baseurl: http://yum.mariadb.org/10.1/centos7-amd64
+            gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB 
+            gpgcheck: yes
+          
+        - name: install mariadb
+          yum:
+            name: mariadb-server 
+            state: latest
+
+        - name: start and enable mariadb
+          service:         
+            name: mariadb
+            state: started
+            enabled: true
+      
+         
+
