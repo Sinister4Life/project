@@ -12,22 +12,32 @@
     - httpd
     state: latest
 
-#- name: Automatically insert password to slappasswd
-#  expect:
-#    command: /bin/bash -c '/usr/sbin/slappasswd | tee /passhash'
-#    responses:
-#     (?i*)password: 'password'
-#  no_log: true
+- name: Automatically insert password to slappasswd
+  expect:
+    command: /usr/sbin/slappasswd -c
+    responses:
+     (?i*)password: 'password'
+  no_log: false
 
 # Run slappasswd manually and paste the hashed version into your ldif
 # files as olcRootPW
+
+#- name: slapassword
+#  command: {{ item }}
+#    with_items: 
+#      - slappasswd > slapswd
+#      - var=slapswd
+#      - sed -i '/^olcRootPW:*/c#' hdb.ldif
+#      - echo "olcRootPW: $var" >> hdb.ldif
 
 - name: start services
   service:
     name: slapd
     state: started
     enabled: yes
-    name: httpd
+
+- name: httpd
+  service:
     state: started
     enabled: yes
 
@@ -36,10 +46,10 @@
    src: hdb.ldif
    dest: /root/hdb.ldif
 
-#- name: run ldapmodify
-#  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/hdb.ldif
-#  args:
-#    executable: /bin/bash
+- name: run ldapmodify
+  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/hdb.ldif
+  args:
+    executable: /bin/bash
 
 - name: configure monitoring privs
   template:
@@ -47,9 +57,10 @@
     dest: /root/monitor.ldif
 
 - name: run ldapmodify
-  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f /root/monitor.ldif
+  shell: ldapmodify -Y EXTERNAL -H ldapi:/// -f monitor.ldif
   args:
     executable: /bin/bash
+    chdir: /root/
 
 #- name: listen on SSL
 #  template:

@@ -1,6 +1,6 @@
 ---
 - name: LDAP Installation
-  hosts: LDAP
+  hosts: test
   remote_user: ansible
   become: yes
   roles:
@@ -26,7 +26,7 @@
       command: ldapsearch -x -W -D "cn=admin,dc=ziyotek5,dc=local" -b "dc=ziyotek5,dc=local" "(objectclass=*)"
       responses:
        (?!)password: password
-    no_log: true
+    no_log: false
   
   - name: cosine
     command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
@@ -45,11 +45,16 @@
         - httpd
       state: latest
 
-  - name: Configuring config.php
+  - name: Configuring config.php, phpldapadmin.conf
     command: chdir=/etc/phpldapadmin {{ item }}
     with_items: 
-      - grep "\$servers->setValue('server','base',array(''))" 305 | sed 's/\/\///' | sed "s/array('')/array('dc=ziyotek5,cn=local')/"
-      - grep "\$servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com')" 305 | sed 's/^#$*//' | sed 's/'cn=Manager,dc=example,dc=com'/'cn=admin,dc=ziyotek5,dc=local'/'
-      - grep 
-   !!!!!!! PLEASE DON'T TOUCH PLEASE I BEG YOU !!!!!!!  
-     
+      - grep "\$servers->setValue('server','base',array(''))" 305 | sed 's/\/\///' | sed "s/array('')/array('dc=ziyotek5,cn=local')/" >> config.php
+      - grep "\$servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com')" 305 | sed 's/^#$*//' | sed 's/'cn=Manager,dc=example,dc=com'/'cn=admin,dc=ziyotek5,dc=local'/' >> config.php
+      - grep "\$servers->setValue('login','attr','dn');" 305 |  sed 's/\/\///' | sed 's/^#//' >> config.php
+      - grep "\$servers->setValue('login','attr','dn');" 305 |  sed 's/\/\///' | sed 's/^#*//'>> config.php
+      - echo "Require ip 192.168.40.0/22" >> /etc/httpd/conf.d/phpldapadmin.conf 
+   
+  - name: Starting httpd service
+    command: systemctl enable httpd.service && systemctl start httpd.service
+ 
+
