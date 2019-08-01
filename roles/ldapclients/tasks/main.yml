@@ -9,17 +9,17 @@
     - sssd
     state: latest
 
-- name: Push templates to autofs
-  template:
-    src: auto.master
-    dest: /etc/auto.master
-- name: Push templates to autofs
-  template:
-    src: auto.home
-    dest: /etc/auto.home
+#- name: Push templates to autofs
+#  template:
+#    src: auto.master
+#    dest: /etc/auto.master
+#- name: Push templates to autofs
+#  template:
+#    src: auto.home
+#    dest: /etc/auto.home
 
 - name: Configure authconfig
-  command: authconfig --enablemkhomedir --enableldap --enableldapauth --ldapserver=ldap://prdx-ldap15.ziyotek5.local --ldapbasedn="dc=ziyotek5,dc=local" --update
+  command: authconfig --enableldap --enableldapauth --ldapserver=ldap://prdx-ldap15.ziyotek5.local --ldapbasedn="dc=ziyotek5,dc=local" --update
 
 - name: Assuming the NFS client script has already been run...
   service:
