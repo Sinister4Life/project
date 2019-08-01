@@ -21,6 +21,7 @@
     dest: /usr/local/sbin/haproxy
     state: link
 
+# If this doesn't work, then disable firewall
 - name: configure firewall
   iptables:
     chain: INPUT

@@ -2,12 +2,12 @@
 - name: start nfs idmap service for rh7     
   service:
     name: nfs-idmap
-    state: started
-    enabled: yes
+    state: stopped 
+    enabled: no
     name: nfs-lock
-    state: started
-    enabled: yes
+    state: stopped
+    enabled: no
     name: nfs-server
-    state: started
-    enabled: yes
+    state: stopped
+    enabled: no
 

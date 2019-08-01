@@ -1,0 +1,77 @@
+$TTL 1D
+@	IN SOA	prdx-nsmaster15.ziyotek5.local. root.prdx-nsmaster15.ziyotek5.local. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
+       
+	
+; name servers NS records
+			IN      NS      prdx-nsmaster15.ziyotek5.local.
+			IN	NS	prdx-nsworker15.ziyotek5.local.
+			IN	NS	prdx-nsworker25.ziyotek5.local.            
+; name servers A records
+
+test6			IN	A	192.168.45.222
+prdx-nsmaster15		IN      A       192.168.45.12
+prdx-nsworker15		IN	A	192.168.45.13
+prdx-nsworker25		IN	A	192.168.45.14
+prdx-pxe15		IN	A	192.168.45.150
+prdx-ntp15		IN	A	192.168.45.10
+prdx-ntp25		IN	A	192.168.45.11
+prdx-ansible15		IN	A	192.168.45.16
+prdx-ftp15		IN	A	192.168.45.151
+prdx-nfs15		IN	A	192.168.45.18
+prdx-samba15		IN	A	192.168.45.19
+prdx-mail15		IN	A	192.168.45.20
+prdx-nagios15		IN	A	192.168.45.31
+prdx-db156		IN	A	192.168.45.21
+prdx-db157		IN	A	192.168.45.22
+prdx-webserver156       IN	A	192.168.45.23
+prdx-webserver157	IN	A	192.168.45.24
+prdx-webserver256	IN	A	192.168.45.25
+prdx-webserver257	IN	A	192.168.45.26
+prdx-webserver356	IN	A	192.168.45.27
+prdx-webserver357	IN	A	192.168.45.29
+test			IN	A	192.168.45.230
+prdx-ldap15		IN	A	192.168.45.28
+prdx-docker15		IN	A	192.168.45.33
+prdx-jenkins15		IN	A	192.168.45.34
+prdx-haproxy156		IN	A	192.168.45.32
+prdx-haproxy157		IN	A	192.168.45.30
+prdx-kubem15		IN	A	192.168.45.35
+prdx-kubew15		IN      A       192.168.45.36
+prdx-kubew25		IN 	A	192.168.45.37
+
+; alias name records
+masterdns		IN	CNAME	prdx-nsmaster15.ziyotek5.local.
+clientdns15		IN	CNAME	prdx-nsworker15.ziyotek5.local.
+clientdns25		IN	CNAME	prdx-nsworker25.ziyotek5.local.
+pxe			IN	CNAME	prdx-pxe15.ziyotek5.local.
+ntp15			IN	CNAME	prdx-ntp15.ziyotek5.local.
+ntp25			IN	CNAME	prdx-ntp25.ziyotek5.local.
+ansible			IN	CNAME	prdx-ansible15.ziyotek5.local.
+ftp			IN	CNAME	prdx-ftp15.ziyotek5.local.
+ntp			IN	CNAME	prdx-ntp15.ziyotek5.local.
+samba			IN	CNAME	prdx-samba15.ziyotek5.local.
+nfs			IN	CNAME	prdx-nfs15.ziyotek5.local.
+mail			IN	CNAME	prdx-mail15.ziyotek5.local.
+nagios			IN	CNAME	prdx-nagios15.ziyotek5.local.
+db156			IN	CNAME	prdx-db156.ziyotek5.local.
+db157			IN	CNAME	prdx-db157.ziyotek5.local.	
+ldap			IN	CNAME	prdx-ldap15.ziyotek5.local.
+docker 			IN	CNAME	prdx-docker15.ziyotek5.local.
+testserver		IN	CNAME	test.ziyotek5.local.
+jenkins			IN	CNAME	prdx-jenkins15.ziyotek5.local.
+web156			IN	CNAME	prdx-webserver156.ziyotek5.local.
+web157			IN	CNAME	prdx-webserver157.ziyotek5.local.
+web256			IN	CNAME   prdx-webserver256.ziyotek5.local.
+web257			IN	CNAME	prdx-webserver257.ziyotek5.local.
+web356			IN	CNAME   prdx-webserver356.ziyotek5.local.
+web357			IN      CNAME	prdx-webserver357.ziyotek5.local.
+haproxy156		IN	CNAME   prdx-haproxy156.ziyotek5.local.
+haproxy157		IN	CNAME	prdx-haproxy157.ziyotek5.local.
+kubernetes		IN	CNAME   prdx-kubem15.ziyotek5.local.
+kubernetesworker15	IN	CNAME	prdx-kubew15.ziyotek5.local.
+kubernetesworker25	IN	CNAME	prdx-kubew25.ziyotek5.local.

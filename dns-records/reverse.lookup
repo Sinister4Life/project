@@ -1,0 +1,43 @@
+$TTL 1D
+@	IN SOA	prdx-nsmaster15.ziyotek5.local. root.prdx-nsmaster15.ziyotek.local. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
+	
+
+; name servers NS records
+	IN      NS      prdx-nsmaster15.ziyotek5.local.
+	IN	NS	prdx-nsworker15.ziyotek5.local.
+	IN	NS	prdx-nsworker25.ziyotek5.local.           
+; name servers PTR records
+12	IN      PTR     prdx-nsmaster15.ziyotek5.local.
+13	IN	PTR	prdx-nsworker15.ziyotek5.local.
+14	IN	PTR	prdx-nsworker25.ziyotek5.local.
+10	IN	PTR	prdx-ntp15.ziyotek5.local.
+11	IN	PTR	prdx-ntp25.ziyotek5.local.
+150	IN	PTR	prdx-pxe15.ziyotek5.local.
+16	IN	PTR	prdx-ansible15.ziyotek5.local.
+151	IN	PTR	prdx-ftp15.ziyotek5.local.
+18	IN	PTR	prdx-nfs15.ziyotek5.local.
+19	IN	PTR	prdx-samba15.ziyotek5.local.
+20	IN	PTR	prdx-mail15.ziyotek5.local.
+31	IN	PTR	prdx-nagios15.ziyotek5.local.
+21	IN	PTR	prdx-db156.ziyotek5.local.
+22	IN	PTR	prdx-db157.ziyotek5.local.
+28	IN	PTR	prdx-ldap15.ziyotek5.local.
+33 	IN	PTR	prdx-docker15.ziyotek.local.
+23	IN	PTR	prdx-webserver156.ziyotek5.local.
+24	IN	PTR	prdx-webserver157.ziyotek5.local.
+25	IN	PTR	prdx-webserver256.ziyotek5.local.
+26	IN	PTR	prdx-webserver257.ziyotek5.local.
+27	IN	PTR	prdx-webserver356.ziyotek5.local.
+29	IN	PTR	prdx-webserver357.ziyotek5.local.
+32      IN	PTR	prdx-haproxy156.ziyotek5.local.
+30      IN	PTR     prdx-haproxy157.ziyotek5.local.
+34	IN      PTR	prdx-jenkins15.ziyotek5.local.
+35	IN	PTR	prdx-kubem15.ziyotek5.local.
+36	IN	PTR	prdx-kubew15.ziyotek5.local.
+37	IN	PTR	prdx-kubew25.ziyotek5.local.
+230	IN	PTR	test.ziyotek5.local.

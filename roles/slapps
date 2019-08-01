@@ -1,0 +1,10 @@
+#!/usr/sbin/slappasswd -s
+expect_user -re "(\[^ \]+) (\[^ \]+)\n"
+set user $expect_out(1,string)
+set pw   $expect_out(2,string)
+spawn passwd $user
+expect "password:"
+send "$pw\r"
+expect "password:"
+send "$pw\r"
+expect eof

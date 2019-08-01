@@ -1,2 +1,0 @@
-// $servers->setValue('server','base',array(''))
-#$servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com');

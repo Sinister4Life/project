@@ -9,7 +9,7 @@
 - name: install nfs-utils
   yum:
     name: 
-    - nfs-utils
+#    - nfs-utils
     - autofs
     state: latest
 
@@ -29,23 +29,23 @@
 #- name: edit fstab
 #  shell:  echo 'prdx-nfs15:/var/share      /share     nfs      rw,sync,intr,soft,timeo=100      0 0' >> /etc/fstab
 
-#- name: unmount share dir if already mounted, hopefully fixes bug
+- name: unmount share dir if already mounted, hopefully fixes bug
 #  command: umount -l /share
-#  mount:
-#    path: /share
-#    state: unmounted
+  mount:
+    path: /share
+    state: absent
 
 #- name: create share dir
 #  file:
 #    path: /share
 #    state: directory
 
-- name: mount nfs dir
-  mount:
-    path: /share
-    src: prdx-nfs15:/var/share
-    fstype: nfs
-    state: mounted
+#- name: mount nfs dir
+#  mount:
+#    path: /share
+#    src: prdx-nfs15:/var/share
+#    fstype: nfs
+#    state: mounted
 
 #- name: mount dir
 #  command: mount -t nfs nfs:/var/share /share
@@ -55,16 +55,20 @@
 
 - name: insert autofs master file
   template:
-    src: share.autofs
+    src: auto.master
     dest: /etc/auto.master
 - name: insert autofs map file
   template:
     src: auto.share
     dest: /etc/auto.share
+- name: insert home dir share
+  template:
+    src: home.map
+    dest: /etc/home.map
 
 - name: start autofs
   service:
     name: autofs
-    state: started
+    state: restarted
     enabled: yes
 

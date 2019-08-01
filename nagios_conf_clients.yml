@@ -1,0 +1,23 @@
+---
+#CONFIGURING CLIENTS FOR NAGIOS MONITORING PLEASE BE CAREFUL
+
+- name: changing conf files
+  hosts: all
+  become_user: ansible
+  become: true
+
+
+  tasks:
+
+  - name: installing packages
+    shell: yum install -y epel-release && yum install -y nrpe nagios-plugins-all
+    args:
+      executable: /bin/bash
+    become_user: root
+
+  - name: adding ip into nrp.cfg
+    shell: echo "allowed_hosts=127.0.0.1,192.168.45.31" >> /etc/nagios/nrpe.cfg
+    args:
+      executable: /bin/bash
+    become_user: root
+   
