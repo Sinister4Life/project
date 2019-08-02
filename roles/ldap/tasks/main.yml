@@ -11,15 +11,16 @@
     - pexpect
     - httpd
     - epel-release
-    - phpldapadmin
+#    - phpldapadmin
+    - migrationtools
     state: latest
 
-- name: Automatically insert password to slappasswd
-  expect:
-    command: /usr/sbin/slappasswd -c
-    responses:
-     (?i*)password: 'password'
-  no_log: false
+#- name: Automatically insert password to slappasswd
+#  expect:
+#    command: /usr/sbin/slappasswd -c
+#    responses:
+#     (?i*)password: 'password'
+#  no_log: false
 
 # Run slappasswd manually and paste the hashed version into your ldif
 # files as olcRootPW
@@ -38,10 +39,10 @@
     state: started
     enabled: yes
 
-- name: httpd
-  service:
-    state: started
-    enabled: yes
+#- name: start httpd
+#  service:
+#    state: started
+#    enabled: yes
 
 - name: create ldif files
   template:
@@ -91,12 +92,12 @@
     state: restarted
     enabled: yes
 
-  - name: cosine
-    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+- name: cosine
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
  
-  - name: nis
-    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+- name: nis
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
 
-  - name: inetorgperson
-    command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+- name: inetorgperson
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
  
