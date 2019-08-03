@@ -1,0 +1,8 @@
+---
+  - name: Prep for Free IPA
+    hosts: all:!LDAP
+    remote_user: ansible
+    become: yes
+    roles: 
+    - webservers
+ 
