@@ -9,31 +9,32 @@
 - name: install nfs-utils
   yum:
     name: 
-#    - nfs-utils
+    - nfs-utils
     - autofs
+    - rpcbind
     state: latest
 
 - name: start and enable services
   service:
-    name: rpcbind
+    name: autofs
     state: started
     enabled: yes
 #    name: nfs
 #    state: started
 #    enabled: yes
-- include_tasks: setup-RedHat.yml
-  when: 
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_major_version == "7"
+#- include_tasks: setup-RedHat.yml
+#  when: 
+#    - ansible_os_family == 'RedHat'
+#    - ansible_distribution_major_version == "7"
 
 #- name: edit fstab
 #  shell:  echo 'prdx-nfs15:/var/share      /share     nfs      rw,sync,intr,soft,timeo=100      0 0' >> /etc/fstab
 
-- name: unmount share dir if already mounted, hopefully fixes bug
+#- name: unmount share dir if already mounted, hopefully fixes bug
 #  command: umount -l /share
-  mount:
-    path: /share
-    state: absent
+#  mount:
+#    path: /share
+#    state: absent
 
 #- name: create share dir
 #  file:

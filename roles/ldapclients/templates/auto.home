@@ -1,1 +1,1 @@
-* -fstype=autofs,rw,sync prdx-nfs15:/var/share/home/&
+* -fstype=autofs,rw,sync prdx-ldap15:/home/&

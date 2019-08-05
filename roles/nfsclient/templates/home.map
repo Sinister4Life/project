@@ -1,1 +1,1 @@
-* -fstype=nfs,rw,nosuid,soft  prdx-nfs15:/var/home/&
+* -fstype=nfs,rw,nosuid,soft  prdx-ldap15:/home/&

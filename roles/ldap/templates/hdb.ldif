@@ -8,4 +8,4 @@ replace: olcRootDN
 olcRootDN: cn=admin,dc=ziyotek5,dc=local
 -
 add: olcRootPW
-olcRootPW: {SSHA}ORs0dUadjcrapZCsR4LSVw0VMYMUAcNq
+olcRootPW: password

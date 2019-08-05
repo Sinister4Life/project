@@ -39,11 +39,6 @@
     state: started
     enabled: yes
 
-#- name: start httpd
-#  service:
-#    state: started
-#    enabled: yes
-
 - name: create ldif files
   template:
    src: hdb.ldif
@@ -100,4 +95,15 @@
 
 - name: inetorgperson
   command: ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
- 
+
+- name: install phpmyadmin
+  yum:
+    name: phpmyadmin
+    state: latest 
+
+- name: start httpd
+  service:
+    state: started
+    enabled: yes
+
+

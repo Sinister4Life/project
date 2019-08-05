@@ -19,9 +19,18 @@
 #    dest: /etc/auto.home
 
 - name: Configure authconfig
-  command: authconfig --enableldap --enableldapauth --ldapserver=ldap://prdx-ldap15.ziyotek5.local --ldapbasedn="dc=ziyotek5,dc=local" --update
+  command: authconfig --enableldap --enableldapauth --ldapserver=ldap://prdx-ldap15.ziyotek5.local --ldapbasedn="dc=ziyotek5,dc=local" --enablemkhomedir --update
+
+- name: Configure ldap
+  template:
+    src: password-auth-ac
+    dest: /etc/pam.d/password-auth-ac
 
 - name: Assuming the NFS client script has already been run...
   service:
     name: autofs
+    state: restarted
+    name: nslcd
+    state: restarted
+    name: sshd
     state: restarted
