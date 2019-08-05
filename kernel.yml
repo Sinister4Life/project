@@ -1,14 +1,18 @@
 ---
 - hosts: test
- tasks:
-   - name: upgrade the kernel
-     yum:
+  tasks:
+    - name: upgrade the kernel
+      become: yes
+      yum:
        name: kernel
        state: latest
+       update_cache: yes
+
     - name: Check for reboot
       shell: if [ $(rpm -q kernel|tail -n 1) != kernel-$(uname -r) ]; then echo 'reboot'; else echo 'no'; fi
       ignore_errors: true
-      register: reboot_hint   
+      register: reboot_hint
+   
 - hosts: test
   become: yes
   tasks:
