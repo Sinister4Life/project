@@ -1,6 +1,6 @@
 ---
 - name: configure ntp clients
-  hosts: all:!timeservers
+  hosts: test
   remote_user: ansible
   become: true
   become_method: sudo

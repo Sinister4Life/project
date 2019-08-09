@@ -1,6 +1,6 @@
 ---
   - name: configure nfs clients
-    hosts: all:!NFS
+    hosts: test
     user: ansible
     become: true
 

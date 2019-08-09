@@ -1,6 +1,6 @@
 ---
   - name: Configure LDAP clients
-    hosts: all:!LDAP
+    hosts: test
     remote_user: ansible
     become: yes
     roles:

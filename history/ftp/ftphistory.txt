@@ -1,0 +1,491 @@
+    1  clear
+    2  ls
+    3  mkdir dir
+    4  ls
+    5  ls dir/
+    6  ./dir/nfsclientconf
+    7  ls /share/
+    8  clear
+    9  ./dir/nfsclientconf
+   10  ls
+   11  vim dir/nfsclientconf
+   12  vi dir/nfsclientconf
+   13  ./dir/nfsclientconf
+   14  mount -t nfs prdx-nfs:/var/share /share
+   15  mount -t nfs prdx-nfs15:/var/share /share
+   16  clear
+   17  vi /etc/dhcp/dhclient.d/chrony.sh
+   18  yum install -y ntpd chronyd
+   19  clear
+   20  yum info ntpd
+   21  yum install -t ntpd
+   22  yum install -t ntp
+   23  clear
+   24  yum install -y chrony
+   25  clear
+   26  vi /etc/ntp.conf 
+   27  systemctl restart ntpd
+   28  systemctl enable ntpd
+   29  systemctl start ntpd
+   30  ntpq -p
+   31  systemctl restart ntpd
+   32  ntpq -p
+   33  clear
+   34  timedatectl set-ntp true
+   35  clear
+   36  ntpd -u 192.168.45.10
+   37  ntpq -p
+   38  systemctl restart ntpd
+   39  ntpq -p
+   40  vi /etc/chrony.
+   41  vi /etc/chrony.conf
+   42  vi /etc/ntp.conf 
+   43  systemctl restart ntpd
+   44  ntpq -p
+   45  chronyc sources
+   46  systemctl start chronyd
+   47  systemctl enable chronyd
+   48  chronyc sources
+   49  ntpq -p
+   50  systemctl restart ntpd
+   51  ntpq -p
+   52  chronyc sources
+   53  clear
+   54  systemctl restart chronyd
+   55  chronyc sources
+   56  clear
+   57  chronyc sources
+   58  clear
+   59  timedatectl
+   60  clear
+   61  ls
+   62  ls dir/
+   63  ls
+   64  ls dir/
+   65  ls
+   66  ls dir/
+   67  ls
+   68  ls dir/
+   69  clear
+   70  ls
+   71  ls dir/
+   72  clear
+   73  cd dir/
+   74  ls
+   75  mkdir CentOS7
+   76  mv CentOS7 ..
+   77  ls
+   78  ls ..
+   79  mv * ../CentOS7/
+   80  ls
+   81  cd ..
+   82  ls
+   83  ls CentOS7
+   84  clear
+   85  ls
+   86  ls dir/
+   87  rm -rf dir
+   88  clear
+   89  cat CentOS7/conffiles/ntp.conf
+   90  cler
+   91  clear
+   92  ls
+   93  useradd ansible
+   94  passwd ansible
+   95  clear
+   96  vi /etc/sudoers
+   97  visudo
+   98  exit
+   99  clear
+  100  ls
+  101  ls dir/
+  102  nmtui
+  103  clear
+  104  cat /etc/passwd
+  105  exit
+  106  clear
+  107  exit
+  108  clear
+  109  systemctl restart network
+  110  clear
+  111  su - ansible
+  112  clear
+  113  scp roo@192.168.45.152:/root/tftpboot.sh .
+  114  clear
+  115  scp root@192.168.45.152:/root/tftpboot.sh .
+  116  clear
+  117  ls
+  118  ntpq -p
+  119  clear
+  120  yum install -y vim
+  121  clear
+  122  vim tftpboot.sh
+  123  ls
+  124  vim tftpboot.sh
+  125  clear
+  126  getenforce
+  127  systemctl stop firewalld
+  128  systemctl enable firewalld
+  129  clear
+  130  systemctl stop firewalld
+  131  systemctl disable firewalld
+  132  clear
+  133  nslookup testftp
+  134  nslookup tftp
+  135  yum install -y rsync
+  136  ls
+  137  systemctl start ntpd
+  138  ntpq -p
+  139  clear
+  140  getenforce
+  141  su - ansible
+  142  clear
+  143  nslookup pxe
+  144  nslookup ftp
+  145  clear
+  146  clear
+  147  ls
+  148  vim tftpboot.sh 
+  149  ./tftpboot.sh 
+  150  vim tftpboot.sh 
+  151  vim .tftpboot.sh.swp
+  152  rm -rf .tftpboot.sh.swp 
+  153  clear
+  154  vim tftpboot.sh 
+  155  systemctl start xinetd
+  156  systemctl enable xinetd
+  157  systemctl start vsftpd
+  158  systemctl enable vsftpd
+  159  vim tftpboot.sh 
+  160  mkdir /var/lib/tftpboot/networkboot
+  161  cp -p /var/ftp/pub/CentOS7/images/pxeboot/{vmlinuz,initrd.img} /var/lib/tftpboot/networkboot/
+  162  clear
+  163  ls
+  164  cat passgen 
+  165  cat status 
+  166  clear
+  167  vim tftpboot.sh
+  168  cat /var/ftp/pub/CentOS7/centos7.cfg
+  169  vim tftpboot.sh
+  170  vim /var/ftp/pub/CentOS7/centos7.cfg
+  171  vim tftpboot.sh
+  172  cat /var/lib/tftpboot/pxelinux.0 
+  173  clear
+  174  mkdir /var/lib/tftpboot/pxelinux.cfg
+  175  vim /var/lib/tftpboot/pxelinux.cfg
+  176  vim /var/lib/tftpboot/pxelinux.cfg/default
+  177  systemctl restart xientd
+  178  systemctl restart xinetd
+  179  systemctl restart vsftpd
+  180  clear
+  181  vim tftpboot.sh 
+  182  clear
+  183  vim tftpboot.sh 
+  184  vim /var/ftp/pub/CentOS7/centos7.cfg
+  185  systemctl restart xinetd
+  186  systemctl restart vsftpd
+  187  vim /var/ftp/pub/CentOS7/centos7.cfg
+  188  vim /etc/mtools.conf
+  189  multipath
+  190  clear
+  191  multipath -v2
+  192  yum info multipath
+  193  yum provides multipath
+  194  yum provides */multipath
+  195  yum install device-mapper-multipath* -y
+  196  multipath -2 -d
+  197  multipath -l
+  198  multipath -ll
+  199  cp -vp /usr/share/doc/device-mapper-multipath-0.4.9/multipath.conf /etc/
+  200  multipath -ll
+  201  mpathconf --enable
+  202  multipath -ll
+  203  multipath -l
+  204  multipath -2 -d
+  205  multipath -h
+  206  multipath -d
+  207  mpathconf --help
+  208  vim /etc/multipath.conf
+  209  multipath -v2
+  210  multipath -v2 -d
+  211  vim /etc/multipath.conf
+  212  systemctl restart multipath
+  213  systemctl restart multipathd
+  214  multipath -v2
+  215  multipath -v2d
+  216  multipath -t
+  217  clear
+  218  multipath -v2d
+  219  vim /etc/multipath.conf
+  220  multipath -v2d
+  221  clear
+  222  vim /etc/multipath.conf
+  223  rm -rf /etc/multipath.conf
+  224  rm -rf /etc/multipath
+  225  systemctl stop multipathd
+  226  yum remove device-mapper-multipath* -y
+  227  clear
+  228  systemctl restart xinetd
+  229  systemctl restart vsftpd
+  230  vi /etc/xinetd.d/tftp
+  231  vim tftpboot.sh 
+  232  clear
+  233  vim /var/ftp/pub/CentOS7/centos7.cfg
+  234  clear
+  235  systemctl restart xinetd
+  236  systemctl restart vsftpd
+  237  systemctl status vsftpd
+  238  systemctl start vsftpd
+  239  systemctl enable vsftpd
+  240  systemctl status vsftpd
+  241  journalctl -xe
+  242  systemctl enable vsftpd
+  243  systemctl status vsftpd
+  244  clear
+  245  systemctl status vsftpd
+  246  clea
+  247  clear
+  248  systemctl status xinetd
+  249  clear
+  250  systemctl status vsftpd
+  251  systemctl start vsftpd
+  252  systemctl status vsftpd
+  253  clear
+  254  journalctl -xe
+  255  systemctl status vsftpd
+  256  journalctl -xe
+  257  clear
+  258  ./tftpboot.sh
+  259  clear
+  260  echo "yes" > file
+  261  sed 's/no/yes/' file 
+  262  cat file 
+  263  sed 's/yes/no/' file 
+  264  cat file 
+  265  sed -i 's/yes/no/' file 
+  266  cat file 
+  267  vim tftpboot.sh 
+  268  vi /var/lib/tftpboot/pxelinux.cfg/default 
+  269  vi /var/ftp/pub/centos7.cfg
+  270  vim /var/ftp/pub/CentOS7/centos7.cfg 
+  271  clear
+  272  systemctl restart vsftpd
+  273  systemctl restart xinetd
+  274  vim /etc/hosts.deny
+  275  vim /etc/hosts.allow 
+  276  systemctl status firewalld
+  277  getenforce
+  278  cat /var/lib/tftpboot/pxelinux.cfg/default
+  279  vom /var/lib/tftpboot/pxelinux.cfg/default
+  280  vim /var/lib/tftpboot/pxelinux.cfg/default
+  281  systemctl restart xinetd
+  282  cat /var/lib/tftpboot/networkboot/initrd.img
+  283  clera
+  284  clear
+  285  vim /var/lib/tftpboot/pxelinux.cfg/default
+  286  clear
+  287  vim /var/ftp/pub/CentOS7/centos7.cfg
+  288  systemctl restart xinetd
+  289  ls
+  290  rm -rf centos7.cfg file
+  291  clear
+  292  ls
+  293  clear
+  294  ls
+  295  nslookup webserver256
+  296  scp root@192.168.45.25:/root/centos6/* .
+  297  clear
+  298  ls
+  299  mkdir centos6
+  300  mv {pxelinux.0,menu.c32,memdisk,mboot.c32,chain.c32} centos6/
+  301  ls
+  302  clear
+  303  cd /var/lib/tftpboot/
+  304  ls
+  305  mkdir centos7
+  306  mv {pxelinux.0,menu.c32,memdisk,mboot.c32,chain.c32} centos7/
+  307  clear
+  308  ls
+  309  vim /var/ftp/pub/CentOS7/centos7.cfg 
+  310  vim /var/lib/tftpboot/pxelinux.cfg/default
+  311  ls
+  312  ls /root/centos6/ .
+  313  mv /root/centos6/ .
+  314  clear
+  315  ls
+  316  ls centos
+  317  ls centos7/
+  318  mkdir networkboot/centos7/
+  319  mv networkboot/{initrd.img,vmlinuz} networkboot/centos7/
+  320  clear
+  321  ls networkboot/
+  322  vim /var/lib/tftpboot/pxelinux.cfg/default
+  323  vim /var/ftp/pub/CentOS7/centos7.cfg 
+  324  ls
+  325  cd /tmp/
+  326  mount -o loop /root/CentOS-6.10-x86_64-minimal.iso /mnt/
+  327  clear
+  328  df -h
+  329  cd /mnt/
+  330  mkdir /var/ftp/pub/CentOS6
+  331  cp -av * /var/ftp/pub/CentOS6/
+  332  umount /mnt/
+  333  umount /mnt
+  334  clear
+  335  df -h
+  336  clear
+  337  cd
+  338  umount /mnt
+  339  clear
+  340  ls
+  341  mv CentOS-6.10-x86_64-minimal.iso /var/ftp/pub/CentOS6/
+  342  clear
+  343  cd /var/lib/tftpboot/
+  344  ls
+  345  cp -p /var/ftp/pub/CentOS6/images/pxeboot/{initrd.img,vmlinuz} networkboot/ 
+  346  ls
+  347  ls networkboot/
+  348  mkdir networkboot/centos6
+  349  mv networkboot/initrd.img networkboot/vmlinuz networkboot/centos6/
+  350  clear
+  351  ls networkboot/centos6/
+  352  openssl passwd -1 password
+  353  vim /var/ftp/pub/CentOS6/centos6.cfg
+  354  vim /var/lib/tftpboot/pxelinux.cfg/default 
+  355  systemctl restart vsftpd
+  356  systemctl restart xinetd
+  357  ls
+  358  mv centos7/* .
+  359  ls
+  360  rm -rf centos7
+  361  clear
+  362  ls
+  363  vim pxelinux.cfg/default
+  364  systemctl restart vsftpd
+  365  systemctl restart xinetd
+  366  mv pxelinux.cfg/default pxelinux.cfg/default7
+  367  vim pxelinux.cfg/default7
+  368  vim pxelinux.cfg/default6
+  369  vim pxelinux.cfg/default7
+  370  vim pxelinux.cfg/default6
+  371  vim pxelinux.cfg/default7
+  372  vim pxelinux.cfg/default6
+  373  clear
+  374  vim pxelinux.cfg/default6
+  375  systemctl restart xinetd
+  376  systemctl restart vsftpd
+  377  vim pxelinux.cfg/default6
+  378  vim pxelinux.cfg/default7
+  379  mv pxelinux.cfg/default7 pxelinux.cfg/default
+  380  clear
+  381  ls
+  382  rm -rf pxelinux.cfg/default6
+  383  clear
+  384  vim pxelinux.cfg/default 
+  385  ;s
+  386  ls
+  387  vim pxelinux.cfg/default 
+  388  clear
+  389  systemctl restart xinetd
+  390  systemctl restart vsftpd
+  391  vim pxelinux.cfg/default 
+  392  systemctl restart xinetd
+  393  systemctl restart vsftpd
+  394  vim pxelinux.cfg/default 
+  395  ls
+  396  cd
+  397  vim /var/ftp/pub/CentOS6/centos6.cfg
+  398  clear
+  399  systemctl restart vsftpd
+  400  systemctl restart xinetd
+  401  clear
+  402  vim pxelinux.cfg/default 
+  403  cd /var/lib/tftpboot/
+  404  vim pxelinux.cfg/default 
+  405  vim /var/ftp/pub/CentOS6/centos6.cfg
+  406  clear
+  407  systemctl restart xinetd
+  408  systemctl restart vsftpd
+  409  clear
+  410  cd
+  411  clear
+  412  hostnamectl set-hostname prdx-ftp15.ziyotek5.local
+  413  clear
+  414  bash
+  415  hostname -I
+  416  ls /var/ftp
+  417  ls /var/ftp/pub
+  418  ls /var/ftp/pub/CentOS6
+  419  ls /var/ftp/pub/CentOS7
+  420  ls /var/ftp/pub/CentOS7/conffiles/
+  421  ls /var/ftp/pub/CentOS7/SCRIPTS/
+  422  nmtui
+  423  ll /
+  424  ll /share/
+  425  reboot
+  426  vi /etc/auto.master
+  427  vi /etc/auto.share
+  428  service autofs start
+  429  ll /
+  430  cd /share/
+  431  ls
+  432  ll
+  433  cd ..
+  434  ll /
+  435  cd /var/ftp/pub/
+  436  ls
+  437  ls CentOS7
+  438  ll /
+  439  service autofs status
+  440  yum install autofs
+  441  vi /etc/fstab
+  442  mount -a
+  443  hostname -I
+  444  yum install nfs-utils
+  445  yum install rpcbind
+  446  umount /share
+  447  mount -t nfs nfs:/var/share /share
+  448  ll /
+  449  clear
+  450  exit
+  451  clear
+  452  ls
+  453  cat tftpboot.sh 
+  454  clear
+  455  cd /var/lib/tftpboot/pxelinux.cfg/
+  456  cat default 
+  457  cd /var/lib/tftpboot/
+  458  ls networkboot/
+  459  clear
+  460  cd
+  461  clear
+  462  ls
+  463  clear
+  464  ckear
+  465  clear
+  466  vim
+  467  clear
+  468  vim /var/ftp/pub/CentOS7/centos7.cfg
+  469  hostname
+  470  vim /var/ftp/pub/CentOS7/centos7.cfg
+  471  clear
+  472  cat anaconda-ks.cfg 
+  473  clear
+  474  ls
+  475  cat tftpboot.sh 
+  476  vim tftpboot.sh 
+  477  clea
+  478  clear
+  479  ls /var/ftp/pub/
+  480  clear
+  481  scp tftpboot.sh root@192.168.47.40:/root/
+  482  clear
+  483  ls
+  484  vim tftpboot.sh
+  485  clear
+  486  tailf /var/log/secure
+  487  host ldap
+  488  history
+  489  cat /var/ftp/pub/CentOS7/centos7.cfg
+  490  scp /var/ftp/pub/CentOS7/centos7.cfg prdx-ansible15://ansible/history/ftp/
+  491  history > ftphistory.txt

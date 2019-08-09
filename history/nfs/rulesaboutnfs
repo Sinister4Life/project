@@ -1,0 +1,7 @@
+#Before doing smthing with nfs on nfs-clients, make sure to umount /share on clients
+#Before configuring nfs-master, WHICH IS NOT PERMITTED by evil spirit - satan aka 666 and GOD HIMSELF aka HALLELUJAH, make sure to umount /var/share
+#After configuring nfs-master, remount, do exportfs -a, then systemctl restart nfs-server
+#!!!In nfs-master we DON'T need to mount anything or create mounting points in /etc/fstab!!!
+#Make sure on nfs-master /share folder isn't mounted but only /var/share
+#Always check where /share is mounted from, by df -h command, if /share doesn't seem to be mounted or mounting not possible, then you played yourself dawg
+#DON'T configure or re-configure nfs-master, it is already configured

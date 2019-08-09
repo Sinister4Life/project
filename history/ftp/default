@@ -1,0 +1,14 @@
+default menu.c32
+prompt 10
+timeout 20
+
+MENU TITLE ######## PXE Menu #########
+LABEL CentOS 7( 64-bit)
+MENU LABEL ^1) Install CentOS 7 (64-bit)
+KERNEL /networkboot/centos7/vmlinuz
+APPEND initrd=/networkboot/centos7/initrd.img inst.repo=ftp://192.168.45.151/pub/CentOS7/ ks=ftp://192.168.45.151/pub/CentOS7/centos7.cfg
+
+LABEL CentOS 6 (64-bit)
+MENU LABEL ^2) Install CentOS 6 (64-bit)
+KERNEL /networkboot/centos6/vmlinuz
+APPEND initrd=/networkboot/centos6/initrd.img inst.repo=ftp://192.168.45.151/pub/CentOS6/ ks=ftp://192.168.45.151/pub/CentOS6/centos6.cfg

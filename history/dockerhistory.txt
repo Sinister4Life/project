@@ -1,0 +1,107 @@
+    1  yum install -y yum-utils device-mapper-persistent-data lvm2
+    2  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    3  yum install -y docker-ce
+    4  setenforce 0
+    5  systemctl stop firewalld
+    6  systemctl disable firewalld
+    7  systemctl start docker
+    8  systemctl enable docker
+    9  ip s
+   10  ip a
+   11  docker pull nginx
+   12  yum update
+   13  docker images
+   14  docker run --name ziyo-project-nginx --detach nginx
+   15  docker images
+   16  docker help
+   17  docker container ls
+   18  docker stop b9d0966a6a8e
+   19  docker container ls
+   20  mkdir html
+   21  cd html/
+   22  vi index.html
+   23  cd ..
+   24  docker run --name my-nginx-c2 -p 80:80 -v /home/vivek/html/:/usr/share/nginx/html:ro -d nginx
+   25  docker stop my-nginx-c2
+   26  docker run --name ziyo-project-nginx -p 80:80 -v /root/html/:/usr/share/nginx/html:ro -d nginx
+   27  docker help
+   28  docker rm ziyo-project-nginx
+   29  docker rm my-nginx-c2
+   30  docker run --name ziyo-project-nginx -p 80:80 -v /root/html/:/usr/share/nginx/html:ro -d nginx
+   31  ip a
+   32  docker cp help
+   33  vi html/index.html 
+   34  docker cp /root/html/ ziyo-project-nginx:/usr/share/nginx/html
+   35  docker stop ziyo-project-nginx
+   36  docker rm ziyo-project-nginx
+   37  docker run --name ziyo-project-nginx -p 80:80 -v /root/html/:/usr/share/nginx/html -d nginx
+   38  docker stop ziyo-project-nginx
+   39  docker rm ziyo-project-nginx
+   40  docker run --name ziyo-proj-nginx -p 80:80 -v /root/html/:/usr/share/nginx/html:ro -d nginx
+   41  history
+   42  docker pull mariadb
+   43  docker images
+   44  docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=password -d mariadb
+   45  docker exec -it mariadbtest bash
+   46  ntpq -o
+   47  ntpq -p
+   48  systemctl status firewalld
+   49  getenforce
+   50  systemctl start firewalld
+   51  systemctl enable firewalld
+   52  firewall-cmd --list-all
+   53  firewall-cmd --permanent --add-service=ntp
+   54  systemctl disable firewalld
+   55  systemctl stop firewalld
+   56  ntpq -p
+   57  vi /etc/ntp.conf 
+   58  ntpq -p
+   59  systemctl restart ntpd
+   60  ntpq -p
+   61  exit
+   62  ntpq -p
+   63  ssh keygen
+   64  ssh-keygen
+   65  ssh root@prd-ntp15
+   66  ssh root@prd-ntp15.ziyotek5.local
+   67  ssh root@192.168.45.10
+   68  sudo useradd -p $(openssl passwd password) ansible
+   69  sudo echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+   70  # Generate ssh keys for ansible
+   71  sudo -i -u ansible bash << EOF
+   72  yes y | ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null
+   73  EOF
+   74  systemctl restart autofs
+   75  su - epresley
+   76  ssh epresley@localhost
+   77  ssh jhendrix@localhost
+   78  showmount -e prdx-ldap15
+   79  yum provides showmount
+   80  yum install nfs-utils
+   81  systemctl restart autofs
+   82  showmount -e prdx-ldap15
+   83  ssh jhendrix@localhost
+   84  getent passwd jhendrix
+   85  su - jhendrix
+   86  cd /root/html/
+   87  ls
+   88  cat index.html 
+   89  nslookup prdx-ftp15
+   90  nslookup
+   91  ssh root@prdx-kubew15
+   92  ssh root@prdx-kubem15
+   93  kubctl
+   94  docker container ls
+   95  docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=password -d mariadb
+   96  docker stop mariadb
+   97  docker ps
+   98  docker stop mariadbtest
+   99  docker run --name maria -e MYSQL_ROOT_PASSWORD=password -d mariadb
+  100  docker exec maria
+  101  docker exec -it maria bash
+  102  ssh kubem
+  103  ssh kubem15
+  104  ssh kubernetesm15
+  105  ssh kubernetes
+  106  history
+  107  history > dockerhistory.txt

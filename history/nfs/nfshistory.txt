@@ -1,0 +1,554 @@
+    1  ssh-keygen
+    2  ssh-copy-id root@192.168.45.16
+    3  ip a
+    4  nmtui
+    5  bash
+    6  ccl
+    7  clear
+    8  history
+    9  clear
+   10  nmtui
+   11  clear
+   12  cat /etc/redhat-release 
+   13  systemctl restart named
+   14  systemctl restart network
+   15  clear
+   16  clear
+   17  nslookup masterdns
+   18  clear
+   19  ntpq -p
+   20  clear
+   21  yum install -y bind bind-utils
+   22  nslookup master
+   23  systemctl start named
+   24  systemctl enable named
+   25  systemctl start named
+   26  nslookup master
+   27  systemctl restart network
+   28  nslookup master
+   29  nslookup masterdns
+   30  clear
+   31  yum info rpcbind
+   32  nmtui
+   33  ntpq -p
+   34  nslookup
+   35  clear
+   36  yum install -y nfs-utils nfs-utils-lib
+   37  systemctl enable rpcbind    &&  systemctl start rpcbind
+   38  systemctl enable nfs-server &&  systemctl start nfs-server
+   39  systemctl enable nfs-lock   &&  systemctl start nfs-lock
+   40  systemctl enable nfs-idmap  &&  systemctl start nfs-idmap
+   41  systemctl enable nfs-lock   &&  systemctl start nfs-lock
+   42  systemctl enable rpcbind    &&  systemctl start rpcbind
+   43  systemctl enable nfs-server    &&  systemctl start nfs-server
+   44  systemctl start nfs-server
+   45  systemctl enable nfs-server
+   46  clear
+   47  mkdir /var/nfsshare
+   48  chown nfsnobody:nfsnobody /var/nfsshare/
+   49  chmod 755 /var/nfsshare/
+   50  vi /etc/exports
+   51  exportfs -a
+   52  systemctl status firewalld
+   53  clear
+   54  ls /var/nfsshare/
+   55  vi /var/nfsshare/
+   56  cd /var/nfsshare/
+   57  ls
+   58  rm -rf nfsclientconf nicestuff 
+   59  wget ftp://192.168.45.17/pub/SCRIPTS/*
+   60  yum install -y wget
+   61  wget ftp://192.168.45.17/pub/SCRIPTS/*
+   62  clear
+   63  ls
+   64  bash nicestuff 
+   65  clear
+   66  ntpq -p
+   67  clear
+   68  chmod +x nfsclientconf 
+   69  ls
+   70  rm -rf nfsclientconf nicestuff 
+   71  wget ftp://192.168.45.17/pub/SCRIPTS/*
+   72  ls
+   73  clear
+   74  chmod +x autofs nfsclientconf nicestuff 
+   75  ls
+   76  clear
+   77  ls
+   78  mv nfsclientconf nfsclientONLY
+   79  ntpq -p
+   80  systemctl restart network
+   81  systemctl restart ntpd
+   82  ntpq -p
+   83  clear
+   84  chown nfsnobody:nfsnobody /var/nfsshare/
+   85  chmod 755 /var/nfsshare/
+   86  exportfs -arv
+   87  systecmtl restart nfs
+   88  systemctl restart nfs
+   89  systemctl restart rpcbind
+   90  clear
+   91  wget ftp://192.168.45.17/pub/SCRIPTS/*
+   92  mv autofs nfsclientconf nicestuff /var/nfsshare/
+   93  ls /var/nfsshare/
+   94  systemctl status nfs
+   95  journalctl -xe
+   96  systemctl status rpcbind
+   97  systemctl restart nfs
+   98  systemctl status nfs
+   99  yum update nfs rpc-bind
+  100  vi /etc/exports
+  101  exporfts -arvu
+  102  exportfs -arvu
+  103  exportfs -arv
+  104  systemctl status nfs
+  105  cat /usr/sbin/exportfs 
+  106  clear
+  107  mkdir /package
+  108  mkdir /database
+  109  vi /etc/exports
+  110  exportfs -arv
+  111  vi /etc/exports
+  112  exportfs -arv
+  113  ls /
+  114  vi /etc/exports
+  115  exportfs -arv
+  116  vi /etc/exports
+  117  exportfs -arv
+  118  clear
+  119  cd /var/nfsshare/
+  120  ls
+  121  rm -rf /var/nfsshare/
+  122  ls
+  123  history
+  124  wget ftp://192.168.45.17/pub/SCRIPTS/*
+  125  ls
+  126  wget ftp://192.168.45.17/pub/SCRIPTS/*
+  127  vi /etc/exports
+  128  exportfs -arv
+  129  pwd
+  130  wget ftp://192.168.45.17/pub/SCRIPTS/*
+  131  pwd
+  132  ls
+  133  getfacl .
+  134  clear
+  135  exportfs -arv
+  136  ls /
+  137  rm -rf /database /package/
+  138  rm -rf /database /package
+  139  clear
+  140  wget ftp://192.168.45.17/pub/SCRIPTS/*
+  141  ping 8.8.8.8
+  142  ntpq -p
+  143  clear
+  144  pwd
+  145  cd
+  146  cd /var/
+  147  ls
+  148  mkdir /nfsshare
+  149  ls
+  150  rm -rf /nfsshare/
+  151  ls
+  152  mkdir nfsshare
+  153  clear
+  154  nmtui
+  155  cat /etc/exports
+  156  vi /etc/exports
+  157  ls /share
+  158  ls /var/nfsshare/
+  159  cd /var/nfsshare/
+  160  chmod +x autofs nfsclientconf nicestuff
+  161  ls
+  162  clear
+  163  ls
+  164  touch 1
+  165  ls
+  166  wget ftp://192.168.45.17/pub/SCRIPTS/*
+  167  ls
+  168  cat sshkeys.sh 
+  169  chmod +x autofs nfsclientconf nicestuff 
+  170  ls
+  171  clear
+  172  cd
+  173  clear
+  174  history
+  175  ls /
+  176  ll /
+  177  cd /share/
+  178  ll
+  179  touch testfile
+  180  ll
+  181  yum provides nfs-utils-lib
+  182  ls
+  183  cat /etc/fstab 
+  184  cat /etc/exports
+  185  systemctl restart nfs-server
+  186  systemctl restart nfs
+  187  exportfs -a
+  188  ls
+  189  getenforce
+  190  firewall-cmd --list-all
+  191  service iptables status
+  192  cd ..
+  193  ls
+  194  systemctl start firewalld
+  195  systemctl stop firewalld
+  196  ls
+  197  cd share/
+  198  ls
+  199  df -h
+  200  ll /
+  201  ll /mnt
+  202  ll /run/
+  203  ll /
+  204  ll /var
+  205  man 5 exports
+  206  cat /etc/exports
+  207  man 5 exports
+  208  df -h
+  209  ll /var
+  210  ll /var/share/
+  211  cat /etc/exports
+  212  systemctl restart nfs
+  213  systemctl restart rpcbin
+  214  systemctl restart nfs-utils
+  215  exportfs -ra
+  216  vi /etc/exports
+  217  exportfs -v
+  218  exportfs -va
+  219  df -h
+  220  exportfs -ra
+  221  ll /
+  222  cd /share/
+  223  ls
+  224  ll
+  225  cd ..
+  226  ls
+  227  cd /var/share/
+  228  ls
+  229  touch file1
+  230  exportfs -a
+  231  df -h
+  232  cat /etc/exports
+  233  df -h
+  234  cat /etc/exports
+  235  hostname -I
+  236  cat /etc/fstab
+  237  exportfs -ra
+  238  cat /etc/fstab
+  239  firewall-cmd --list-all
+  240  getenforce
+  241  systemctl status rpcbind
+  242  systemctl status nfs-server
+  243  systemctl status nfs-idmap
+  244  df -h
+  245  ll
+  246  touch file2
+  247  exportfs -ra
+  248  cd /var
+  249  ll
+  250  cat /etc/exports
+  251  clear
+  252  df -h
+  253  cat /etc/fstab 
+  254  vi /etc/fstab 
+  255  partprobe
+  256  df -h
+  257  reboot
+  258  clear
+  259  ls /
+  260  df -h
+  261  vi /etc/fstab 
+  262  getfacl /var/nfsshare/
+  263  vi /etc/exports
+  264  getfacl /var/share/
+  265  vi /etc/exports
+  266  systemctl status firewalld
+  267  systemctl restart nfs-server
+  268  clear
+  269  ls /var/share/
+  270  ll /var/share/
+  271  exportfs -a
+  272  ls /var/share/
+  273  ntpq -p
+  274  systemctl restart ntpd
+  275  ntpq -p
+  276  systemctl restart ntpd
+  277  getenforce
+  278  setenforce 0
+  279  systemctl restart ntpd
+  280  ntpq -p
+  281  clear
+  282  ntpq -p
+  283  clear
+  284  ntpq -p
+  285  vi /etc/exports
+  286  exportfs -a
+  287  clear
+  288  getenforce
+  289  clear
+  290  vi /etc/fstab 
+  291  df -h
+  292  clear
+  293  ls /m
+  294  ls /mnt/
+  295  clear
+  296  umount /mnt/
+  297  clear
+  298  mount /var/share/
+  299  clear
+  300  ls /var/share/
+  301  clear
+  302  vi /etc/fstab 
+  303  mount /var/share/
+  304  vi /etc/fstab 
+  305  vi /etc/exports
+  306  exportfs -a
+  307  vi /etc/exports
+  308  exportfs -a
+  309  vi /etc/exports
+  310  exportfs -a
+  311  vi /etc/exports
+  312  exportfs -a
+  313  vi /etc/exports
+  314  exportfs -a
+  315  vi /etc/exports
+  316  exportfs -a
+  317  systemctl restart nfs-server
+  318  systemctl status firewalld
+  319  clear
+  320  getenforce
+  321  clear
+  322  getfacl /var/share/
+  323  clear
+  324  ls /var/share/
+  325  clear
+  326  vi /etc/exports
+  327  exportfs -a
+  328  vi /etc/nfs.conf
+  329  systemctl status firewalld
+  330  getenforce
+  331  clear
+  332  vi /etc/exports
+  333  systemctl restart nfs
+  334  systemctl restart nfs-server
+  335  df -h
+  336  mount /var/share/
+  337  clear
+  338  vi /etc/fstab 
+  339  vi /etc/exports
+  340  exporfts -ra
+  341  exportfs -ra
+  342  mount -t nfs prdx-nfs15:/var/share /mnt/
+  343  umount /share
+  344  umount /var/share
+  345  mount -t nfs prdx-nfs15:/var/share /mnt/
+  346  exportfs -ra
+  347  mount -t nfs prdx-nfs15:/var/share /mnt/
+  348  umount /share
+  349  rm -rf /share/
+  350  umount /share
+  351  rm -rf /share
+  352  umount /share
+  353  rm -rf /share
+  354  vi /etc/fstab 
+  355  clear
+  356  rm -rf /share
+  357  ps
+  358  top
+  359  clear
+  360  ps -ef | grep mount
+  361  systemctl restart nfs-server
+  362  rm -rf /share
+  363  umount /share
+  364  rm -rf /share
+  365  clear
+  366  ll /share
+  367  clear
+  368  rm -rf /share
+  369  clear
+  370  umount -a
+  371  vi /etc/exports
+  372  umount -a
+  373  clear
+  374  exportfs -ra
+  375  umount -a
+  376  umount /share
+  377  rm -rf /share/
+  378  clear
+  379  vi /etc/exports
+  380  exportfs -ra
+  381  clear
+  382  ls /var/share/
+  383  clear
+  384  mount -t nfs prdx-nfs15:/var/share/ /mnt
+  385  mount -t nfs prdx-nfs15:/var/share/ /mnt/
+  386  ls /var/share/
+  387  clear
+  388  df -h
+  389  clear
+  390  vi /etc/fstab 
+  391  mount -a
+  392  df -h
+  393  lsblk
+  394  clear
+  395  exportfs -r
+  396  tail /var/log/messages
+  397  clear
+  398  umount -a
+  399  clear
+  400  rm -rf /var/share
+  401  vi /etc/exports
+  402  yum remove -y nfs*
+  403  clear
+  404  yum install -y nfs-utils nfs-utils-lib
+  405  systemctl enable rpcbind
+  406  systemctl start rpcbind
+  407  systemctl enable nfs-server
+  408  systemctl start nfs-server
+  409  systemctl enable nfs-lock
+  410  systemctl enable nfs-idmap
+  411  systemctl start nfs-lock
+  412  systemctl start nfs-idmap
+  413  clear
+  414  mkdir /var/share
+  415  chown nfsnobody:nfsnobody /var/nfsshare
+  416  chmod 755 /var/nfsshare
+  417  vi /etc/exports
+  418  exportfs -a
+  419  vi /etc/exports
+  420  exportfs -a
+  421  clear
+  422  systemctl status firewalld
+  423  getenforce
+  424  systemctl restart nfs-server
+  425  vi /etc/exports
+  426  systemctl restart nfs-server
+  427  exportfs -a
+  428  systemctl restart nfs-server
+  429  ls /var/share/
+  430  touch /var/share/touchedfile
+  431  chmod 777 /var/share
+  432  systemctl restart nfs-server
+  433  exportfs -a
+  434  systemctl restart nfs-server
+  435  getfacl /var/share/
+  436  chown nfsnobody:nfsnobody /var/share
+  437  getfacl /var/share/
+  438  clear
+  439  exportfs -a
+  440  systemctl restart nfs-server
+  441  exportfs -a
+  442  systemctl restart nfs-server
+  443  ls /var/share/
+  444  ls
+  445  vi rulesaboutnfs
+  446  ls
+  447  cat rulesaboutnfs 
+  448  vi rulesaboutnfs
+  449  cat rulesaboutnfs 
+  450  clear
+  451  cat rulesaboutnfs 
+  452  vi rulesaboutnfs
+  453  cat rulesaboutnfs 
+  454  clear
+  455  cat rulesaboutnfs 
+  456  clear
+  457  yum install -y openldap-clients nss-pam-ldapd
+  458  authconfig-tui
+  459  getent passwd bektur
+  460  cat /var/share/auto.master 
+  461  vi /etc/auto.master
+  462  ls /etc/auto.master
+  463  ls /etc/auto.master.d
+  464  vi /etc/auto.master.d/share.autofs 
+  465  cat /var/share/home.map 
+  466  cat /var/share/auto.master 
+  467  vi /etc/home.map
+  468  vi /etc/auto.share
+  469  vi /etc/home.map
+  470  systemctl restart autofs
+  471  exportfs -a
+  472  showmount -e
+  473  vi /etc/auto.master.d/share.autofs 
+  474  vi /etc/auto.master.d/home.autofs
+  475  cat /var/share/auto.master 
+  476  vi /etc/auto.master.d/home.autofs
+  477  vi /etc/home.map
+  478  systemctl restart autofs
+  479  exportfs -a
+  480  showmount -e
+  481  rm -rf /etc/auto.master.d/home.autofs
+  482  rm -rf /etc/home.map
+  483  systemctl restart autofs
+  484  exportfs -a
+  485  systemctl restart autofs
+  486  systemctl restart nfs
+  487  cd /var/share/
+  488  ls
+  489  ls home
+  490  cd ..
+  491  ls
+  492  mkdir home
+  493  ll
+  494  chown nfsnobody:nfsnobody home
+  495  chmod 777 home
+  496  ll
+  497  ssh root@192.168.45.12
+  498  df -h
+  499  ssh root@192.168.45.19
+  500  vi /etc/exports
+  501  exportfs -a
+  502  exportfs -v
+  503  showmount -e
+  504  vi /etc/exports
+  505  exportfs -a
+  506  exportfs -v
+  507  showmount -e
+  508  service nfs restart
+  509  exportfs -a
+  510  exportfs -v
+  511  showmount -e
+  512  vi /etc/exports
+  513  service nfs restart
+  514  exportfs -a
+  515  exportfs -v
+  516  showmount -e
+  517  ll /home/
+  518  touch /home/testfile
+  519  ll /home/
+  520  vi /etc/exports
+  521  ll /var
+  522  ll /var/home/
+  523  touch /var/home/12345
+  524  service nfs restart
+  525  exportfs -a
+  526  exportfs -v
+  527  showmount -e
+  528  ll /var/home/
+  529  ll -d /var/home/
+  530  showmount -e
+  531  ll /home/
+  532  ll /var/home/
+  533  cat /etc/autofs_ldap_auth.conf 
+  534  cd /var/share/
+  535  ll
+  536  ls autohome/
+  537  cat auto.master 
+  538  cat home.map 
+  539  cat /etc/exports
+  540  showmount -e
+  541  ll /var/home/
+  542  exportfs -a
+  543  ping 192.168.45.100
+  544  cat /etc/exports
+  545  ssh root@prdx-ldap15
+  546  ls /var/home/
+  547  exit
+  548  vi /etc/exports
+  549  systemctl restart nfs
+  550  exportfs -a
+  551  history
+  552  ls
+  553  cat rulesaboutnfs 
+  554  history > nfshistory.txt

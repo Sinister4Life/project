@@ -1,0 +1,149 @@
+    1  nmtui
+    2  nslookup
+    3  yum install -y bind* ntp
+    4  nslookup
+    5  clear
+    6  ping 192.168.45.12
+    7  yum remove -y sendmail
+    8  vi /etc/hosts
+    9  vi /etc/sysconfig/selinux
+   10  yum install -y epel-release
+   11  firewall-cmd --permanent --add-port=80/tcp
+   12  reboot
+   13  vi /etc/postfix/main.cf
+   14  systemctl enable postfix
+   15  systemctl restart postfix
+   16  useradd admin
+   17  passwd admin
+   18  telnet localhost smtp
+   19  telnet ziyotel5.local smtp
+   20  yum install -y postfix
+   21  telnet ziyotel5.local smtp
+   22  yum install -y telnet
+   23  telnet ziyotel5.local smtp
+   24  telnet ziyotek5.local smtp
+   25  telnet localhost smtp
+   26  ls /home/admin/Maildir/new/
+   27  cat /home/admin/Maildir/new/1563568115.Vfd00I408959M372940.prdx-mail15.ziyotek5.local 
+   28  yum install -y dovecot
+   29  vi /etc/dovecot/dovecot.conf
+   30  vi /etc/dovecot/conf.d/10-mail.conf
+   31  vi /etc/dovecot/conf.d/10-auth.conf
+   32  vi /etc/dovecot/conf.d/10-master.conf
+   33  systemctl enable dovecot
+   34  systemctl start dovecot
+   35  telnet localhost pop3
+   36  telnet ziyotek5.local smtp
+   37  yum install -y squirrelmail
+   38  cd /usr/share/squirrelmail/config/
+   39  ./conf.pl
+   40  vi /etc/httpd/conf/httpd.conf
+   41  systemctl restart httpd
+   42  cd ..
+   43  cd /
+   44   cd .
+   45  cd ~
+   46  useradd admin passwd password
+   47  useradd admin 
+   48  passwd admin
+   49  yum install wget
+   50  wget ftp://192.168.45.17/pub/SCRIPTS/nicestuff
+   51  ls
+   52  chmod +x nicestuff 
+   53  ./nicestuff 
+   54  hostname -I
+   55  nmtui
+   56  cat /etc/httpd/conf/httpd.conf 
+   57  ip a
+   58  cat tail -1 /etc/passwd
+   59  tail -1 /etc/passwd
+   60  tail -10 /etc/passwd
+   61  history
+   62  useradd mufasa -p password
+   63  ll /
+   64  reboot
+   65  tail /etc/passwd
+   66  ntpq -np
+   67  ssh prdx-db15
+   68  ssh prdx-db157
+   69  useradd adminmail
+   70  passwd adminmail
+   71  tail -5 /etc/passwd
+   72  passwd mufasa
+   73  epel-releas
+   74  epel-release
+   75  hostname -a
+   76  hostname
+   77  cd /etc/yum.repos.d/
+   78  ls
+   79  rm -rf local.repo 
+   80  yum repolist
+   81  cd /share
+   82  ls
+   83  cd ..
+   84  umount /share
+   85  ls /share/autohome/
+   86  cat /share/home.map 
+   87  umount /share
+   88  lsof /share
+   89  lsof
+   90  who
+   91  umount /share
+   92  man umount
+   93  umount -f /share
+   94  fuser
+   95  fuser -m /share
+   96  fuser -u -m /share
+   97  fuser -k -m /share
+   98  vi /etc/php.ini
+   99  who
+  100  useradd charlie
+  101  passwd charlie
+  102  vi /etc/postfix/main.cf
+  103  telnet localhost smtp
+  104  cd /usr/share/squirrelmail/config/
+  105  ./conf.pl
+  106  systemctl restart httpd
+  107  ./conf.pl
+  108  systemctl restart httpd
+  109  ./conf.pl
+  110  date
+  111  systemctl restart sendmail
+  112  systemctl restart dovecot
+  113  systemctl restart postfix
+  114  history
+  115  tail -5 /etc/passwd
+  116  useradd zafarjon
+  117  passwd zafarjob
+  118  passwd zafarjon
+  119  nslookup prdx-jenkins15
+  120  ssh root@prdx-docker15
+  121  exit
+  122  sudo useradd -p $(openssl passwd password) ansible
+  123  sudo echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  124  # Generate ssh keys for ansible
+  125  sudo -i -u ansible bash << EOF
+  126  yes y | ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null
+  127  EOF
+  128  cd /etc/pam.d/password-auth-ac 
+  129  cat /etc/pam.d/password-auth-ac 
+  130  yum provides rpcbind
+  131  ssh jhendrix@localhost
+  132  cat /etc/pam.d/password-auth-ac 
+  133  ssh jlennon@localhost
+  134  su - jlennon
+  135  systemctl restart autofs
+  136  su - jhendrix
+  137  ssh jhendrix@localhost
+  138  cat /etc/pam.d/password-auth-ac 
+  139  systemctl restart nslcd
+  140  systemctl restart sshd
+  141  ssh jhendrix@localhost
+  142  useradd test3
+  143  passwd test3
+  144  systemctl restart httpd
+  145  ssh root@prdx-samba15
+  146  history
+  147  vi /etc/postfix/main.cf
+  148  scp /etc/postfix/main.cf prdx-ansible15://ansible/history/mail/
+  149  history > mail.txt

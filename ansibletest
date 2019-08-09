@@ -1,0 +1,5 @@
+# Test that all servers get correct time. Try ntpstat?
+ansible all -m shell -a 'ntpq -p'
+same, but 'cat /etc/resolv.conf' and 'nslookup whatever' to check DNS on all servers
+essentially, test that everything you want to be a client is actually a client
+ansible all -m shell -a 'df -h | grep nfsshare'

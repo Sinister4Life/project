@@ -1,0 +1,328 @@
+    1  systemctl restart nagios
+    2  journalctl -xe
+    3  [root@prdx-ansible15 bashscripts]# cat ansiblesetup.sh
+    4  #!/bin/bash
+    5  sudo useradd -p $(openssl passwd password) ansible
+    6  sudo echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    7  # Generate ssh keys for ansible
+    8  sudo -i -u ansible bash << EOF
+    9  yes y | ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa >/dev/null
+   10  EOF
+   11  ls
+   12  yum install -y gcc glibc glibc-common gd gd-devel make net-snmp openssl-devel http php unzip
+   13  useradd nagios
+   14  groupadd nagcmd
+   15  usermod -aG nagcmd nagios
+   16  usermod -aG nagcmd apache
+   17  cd 
+   18  curl -L -O https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.3.tar.gz
+   19  tar xvf nagios-*.tar.gz
+   20   cd nagios-*
+   21  ./configure --with-command-group=nagcmd
+   22  make all
+   23  make all-commandmode
+   24  make install-commandmode
+   25  make install-init
+   26  make install-config
+   27  make install-webconf
+   28  cd
+   29   curl -L -O http://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
+   30  tar xzvf nagios-plugins-*.tar.gz
+   31  cd nagios-plugins-*
+   32   ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+   33  make
+   34  make install
+   35  cd
+   36   vi /usr/local/nagios/etc/nagios.cfg
+   37  mkdir /usr/local/nagios/etc/servers
+   38  vi /usr/local/nagios/etc/objects/contacts.cfg
+   39  htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   40  htpasswd  /usr/local/nagios/etc/htpasswd.users charlie
+   41  cat /usr/local/nagios/etc/htpasswd.users
+   42  systemctl restart httpd
+   43  systemctl enable httpd
+   44   systemctl start nagios
+   45  /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+   46  history
+   47   cd nagios-*
+   48  make all
+   49   systemctl start nagios
+   50  journalctl -xe
+   51  make install
+   52  make install-commandmode
+   53  make install-init
+   54  make install-config
+   55  make install-webconf
+   56  cd
+   57  curl -L -O http://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
+   58  tar xzvf nagios-plugins-*.tar.gz
+   59   cd nagios-plugins-*
+   60  ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+   61  make
+   62  make install
+   63  cd
+   64  vi /usr/local/nagios/etc/nagios.cfg
+   65  mkdir /usr/local/nagios/etc/servers
+   66  vi /usr/local/nagios/etc/objects/contacts.cfg
+   67  cat /usr/local/nagios/etc/htpasswd.users 
+   68   systemctl restart httpd
+   69   systemctl enable httpd
+   70  /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+   71  systemctl start nagios 
+   72  systemctl enable nagios 
+   73  cp -p /usr/local/nagios/etc/objects/localhost.cfg /usr/local/nagios/etc/servers/infra.cfg
+   74  vi /usr/local/nagios/etc/servers/infra.cfg
+   75  systemctl restart nagios 
+   76  journalctl -xe
+   77  qqqqqq;sad
+   78  vi /usr/local/nagios/etc/servers/infra.cfg
+   79  systemctl restart nagios 
+   80  journalctl -xe
+   81  vi /usr/local/nagios/etc/servers/infra.cfg
+   82  systemctl restart nagios 
+   83  journalctl -xe
+   84  vi /usr/local/nagios/etc/servers/infra.cfg
+   85  systemctl restart nagios 
+   86  vi /usr/local/nagios/etc/servers/infra.cfg
+   87  systemctl restart nagios 
+   88  vi /usr/local/nagios/etc/servers/infra.cfg
+   89  systemctl restart nagios 
+   90  vi /usr/local/nagios/etc/servers/infra.cfg
+   91  cd /usr/local/nagios/libexec/
+   92  $ ./check_dns -H prdx-nsmaster15 -s 192.168.45.12
+   93  ./check_dns -H prdx-nsmaster15 -s 192.168.45.12
+   94  cd /usr/local/nagios/etc/objects/
+   95  ls
+   96  vi commands.cfg
+   97  vi /usr/local/nagios/etc/servers/infra.cfg
+   98  systemctl restart nagios 
+   99  vi /usr/local/nagios/etc/servers/infra.cfg
+  100  systemctl restart nagios 
+  101  vi /usr/local/nagios/etc/servers/infra.cfg
+  102  systemctl restart nagios 
+  103  vi /usr/local/nagios/etc/servers/infra.cfg
+  104  systemctl restart nagios 
+  105  vi /usr/local/nagios/etc/servers/infra.cfg
+  106  cd ..
+  107  ls
+  108  vi /usr/local/nagios/etc/servers/infra.cfg
+  109  systemctl restart nagios 
+  110  vi /usr/local/nagios/etc/servers/infra.cfg
+  111  systemctl restart nagios 
+  112  vi /usr/local/nagios/etc/servers/infra.cfg
+  113  systemctl restart nagios 
+  114  vi /usr/local/nagios/etc/servers/infra.cfg
+  115  systemctl restart nagios 
+  116  vi /usr/local/nagios/etc/servers/infra.cfg
+  117  systemctl restart nagios 
+  118  history
+  119  cd /usr/local/nagios/etc/objects/
+  120  ls
+  121  vi commands.cfg
+  122  vi /usr/local/nagios/etc/servers/infra.cfg
+  123  systemctl restart nagios 
+  124  vi /usr/local/nagios/etc/servers/infra.cfg
+  125  systemctl restart nagios 
+  126  vi /usr/local/nagios/etc/servers/infra.cfg
+  127  systemctl restart nagios 
+  128  vi commands.cfg
+  129  systemctl restart nagios 
+  130  vi /usr/local/nagios/etc/servers/infra.cfg
+  131  vi commands.cfg
+  132  systemctl restart nagios 
+  133  systemctl restart httpd
+  134  systemctl restart network
+  135  vi commands.cfg
+  136  vi /usr/local/nagios/etc/servers/infra.cfg
+  137  systemctl restart nagios 
+  138  systemctl restart httpd
+  139  systemctl restart network
+  140  vi commands.cfg
+  141  vi /usr/local/nagios/etc/servers/infra.cfg
+  142  cd ..
+  143  ls
+  144  cd /usr/local/nagios/libexec/
+  145  ls
+  146  vi /usr/local/nagios/etc/servers/infra.cfg
+  147  systemctl restart network
+  148  systemctl restart nagios 
+  149  vi /usr/local/nagios/etc/servers/infra.cfg
+  150  systemctl restart nagios 
+  151  ntpq -p
+  152  systemctl restart ntpd
+  153  ntpq -p
+  154  vi /etc/ntp.conf 
+  155  systemctl restart ntpd
+  156  ntpq -p
+  157  systemctl restart ntpd
+  158  ntpq -p
+  159  cd ..
+  160  ls
+  161  cd etc/
+  162  ls
+  163  cd objects/
+  164  ls
+  165  vi commands.cfg
+  166  vi /usr/local/nagios/etc/servers/infra.cfg
+  167  systemctl restart ntpd
+  168  systemctl restart nagios
+  169  ntpq -p
+  170  vi commands.cfg
+  171  vi /usr/local/nagios/etc/servers/infra.cfg
+  172  vi commands.cfg
+  173  systemctl restart nagios
+  174  ntpq -p
+  175  /usr/local/nagios/libexec/check_ntp_time -H "prdx-ntp15" -w 0.5 -c 
+  176  /usr/local/nagios/libexec/check_ntp_time -H "prdx-ntp15" -w 0.5 -c 1
+  177  vi /usr/local/nagios/etc/servers/infra.cfg
+  178  systemctl restart nagios
+  179  vi commands.cfg
+  180  systemctl restart nagios
+  181  vi /usr/local/nagios/etc/servers/infra.cfg
+  182  command[check_ntp_time]=/usr/local/nagios/libexec/check_ntp_time -H "Name of NTP server" -w 0.5 -c 1
+  183  command[check_ntp_time]=/usr/local/nagios/libexec/check_ntp_time -H "prdx-ntp15" -w 0.5 -c 1
+  184  command[check_ntp_time]=/usr/local/nagios/libexec/check_ntp_time -H prdx-ntp15 -w 0.5 -c 1
+  185  /usr/local/nagios/libexec/check_ntp_time -H prdx-ntp15 -w 0.5 -c 1
+  186  vi commands.cfg
+  187  systemctl restart nagios
+  188  vi /usr/local/nagios/etc/servers/infra.cfg
+  189  systemctl restart nagios
+  190  vi /usr/local/nagios/etc/servers/infra.cfg
+  191  vi commands.cfg
+  192  systemctl restart nagios
+  193  vi commands.cfg
+  194  vi /usr/local/nagios/etc/servers/infra.cfg
+  195  systemctl restart nagios
+  196  vi commands.cfg
+  197  vi /usr/local/nagios/etc/servers/infra.cfg
+  198  clear
+  199  ls
+  200  clear
+  201  yum --enablerepo=epel -y install nagios-plugin-ntp
+  202  yum --enablerepo=epel-release -y install nagios-plugin-ntp
+  203  yum -y install nagios-plugin-ntp
+  204  clear
+  205  locate commands.cfg
+  206  vim /usr/local/nagios/etc/objects/commands.cfg
+  207  yum install -y vim
+  208  clear
+  209  vim /usr/local/nagios/etc/objects/commands.cfg
+  210  vim /usr/local/nagios/etc/servers/infra.cfg
+  211  vim /usr/local/nagios/etc/servers/infra.cfg 
+  212  ls
+  213  mv check_ntp_s /usr/local/nagios/libexec/
+  214  vim /usr/local/nagios/etc/servers/infra.cfg 
+  215  vim /usr/local/nagios/etc/objects/commands.cfg
+  216  vim /usr/local/nagios/etc/objects/commands.cfg
+  217  vim /usr/local/nagios/etc/servers/infra.cfg 
+  218  systemctl restart nagios
+  219  vim /usr/local/nagios/etc/servers/infra.cfg 
+  220  systemctl restart nagios
+  221  vim /usr/local/nagios/etc/servers/infra.cfg 
+  222  cd /usr/local/nagios/
+  223  clear
+  224  ls
+  225  vim etc/objects/commands.cfg
+  226  systemctl restart nagios
+  227  vim /usr/local/nagios/etc/servers/infra.cfg 
+  228  systemctl restart nagios
+  229  systemctl start nagios
+  230  journalctl -xe
+  231  getenforce
+  232  setenforce 0
+  233  getenforce
+  234  systemctl start nagios
+  235  systemctl stop firewalld
+  236  systemctl disable firewalld
+  237  systemctl start nagios
+  238  journalctl -xe
+  239  vim /usr/local/nagios/etc/servers/infra.cfg 
+  240  systemctl start nagios
+  241  vim /usr/local/nagios/etc/objects/commands.cfg
+  242  systemctl start nagios
+  243  systemctl restart nagios
+  244  vim /usr/local/nagios/etc/servers/infra.cfg 
+  245  systemctl restart nagios
+  246  systemctl status nagios
+  247  clear
+  248  updatedb
+  249  clear
+  250  locate check_ldap
+  251  ls
+  252  locate "check_ldap.pl"
+  253  clear
+  254  vim /usr/local/nagios/etc/servers/infra.cfg 
+  255  vim /usr/local/nagios/libexec/
+  256  vi /usr/local/nagios/etc/servers/infra.cfg 
+  257  cd /usr/local/nagios/etc/servers/infra.cfg 
+  258  vi /usr/local/nagios/etc/servers/infra.cfg 
+  259  vi /usr/local/nagios/etc/objects/commands.cfg
+  260  systemctl restart nagios
+  261  systemctl restart httpd
+  262  vi /usr/local/nagios/etc/servers/infra.cfg 
+  263  vi /usr/local/nagios/etc/objects/commands.cfg
+  264  vi /usr/local/nagios/etc/servers/infra.cfg 
+  265  systemctl restart nagios
+  266  systemctl restart httpd
+  267  vi /usr/local/nagios/libexec/[A
+  268  vi /usr/local/nagios/etc/objects/commands.cfg
+  269  systemctl status firewalld
+  270  systemctl start firewalld
+  271  systemctl enable firewalld
+  272  firewall-cmd --listall
+  273  firewall-cmd --list-all
+  274  firewall-cmd --permanent --add-service=ntp
+  275  firewall-cmd --reload
+  276  systemctl stop firewalld
+  277  systemctl disable firewalld
+  278  systemctl start firewalld
+  279  systemctl enable firewalld
+  280  firewall-cmd --permanent --add-service=http
+  281  firewall-cmd --permanent --add-service=https
+  282  firewall-cmd --reload
+  283  systemctl stop firewalld
+  284  systemctl disable firewalld
+  285  ssh@192.168.45.28
+  286  ssh root@192.168.45.28
+  287  firewall-cmd --permanent --add-port=80/tcp
+  288  systemctl start firewalld
+  289  systemctl enable firewalld
+  290  firewall-cmd --permanent --add-port=80/tcp
+  291  firewall-cmd --permanent --add-port=80/udp
+  292  firewall-cmd --reload
+  293  systemctl stop firewalld
+  294  systemctl disable firewalld
+  295  vi /usr/local/nagios/etc/servers/infra.cfg 
+  296  getenforce
+  297  ssh root@192.168.45.28
+  298  systemctl start firewalld
+  299  systemctl enable firewalld
+  300  firewall-cmd --list-all
+  301  touch /var/www/html/index.html
+  302  chmod 755 /var/www/html/index.html
+  303  ssh root@prdx-
+  304  vi /usr/local/nagios/etc/servers/infra.cfg 
+  305  systemctl restart nagios
+  306  ssh root@prdx-mail15
+  307  systemctl restart nagios
+  308  systemctl restart hhtpd
+  309  systemctl restart httpd
+  310  ssh root@prdx-ntp15
+  311  vi /usr/local/nagios/libexec/
+  312  nslookup prdx-db156
+  313  ssh root@192.168.45.21
+  314  ssh root@prdx-webserver156
+  315  clear
+  316  history
+  317  cd /usr/local/nagios/e
+  318  cd /usr/local/nagios/
+  319  clear
+  320  ls
+  321  vim etc/objects/commands.cfg
+  322  ls
+  323  clear
+  324  ls
+  325  history
+  326  vim etc/servers/infra.cfg
+  327  history
+  328  history > nagioshistory.txt

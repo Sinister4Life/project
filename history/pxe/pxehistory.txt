@@ -1,0 +1,163 @@
+    1  nmtui
+    2  clear
+    3  systemctl stop NetworkManager
+    4  systemctl disable NetworkManager
+    5  clear
+    6  vi /etc/sysconfig/network-scripts/ifcfg-ens192
+    7  systemctl restart network
+    8  clear
+    9  ping 8.8.8.8
+   10  clear
+   11  exit
+   12  clear
+   13  hostname
+   14  cat /etc/passwd
+   15  clear
+   16  ls
+   17  useradd ansible
+   18  passwd ansible
+   19  clear
+   20  visudo
+   21  exit
+   22  clear
+   23  scp root@192.168.45.152:/root/dhcpd.sh .
+   24  clear
+   25  ls
+   26  ntpq -p
+   27  clear
+   28  ls
+   29  vim dhcpd.sh 
+   30  yum install -y vim
+   31  cleaar
+   32  clear
+   33  ls
+   34  vim dhcpd.sh 
+   35  cat /etc/passwd
+   36  su - ansible
+   37  clear
+   38  nslookup masterdns
+   39  yum install -y bind-utils
+   40  clear
+   41  nslookup masterdns
+   42  systemctl start named
+   43  systemctl enable named
+   44  yum install -y bind*
+   45  nslookup masterdns
+   46  systemctl restart named
+   47  systemctl start named
+   48  systemctl enable named
+   49  systemctl restart named
+   50  nslookup masterdns
+   51  systemctl restart network
+   52  nslookup masterdns
+   53  ip a
+   54  nslookup masterdns
+   55  systemctl restart network
+   56  vi /etc/resolv.conf
+   57  systemctl restart network
+   58  systemctl restart named
+   59  nslookup masterdns
+   60  nmtui
+   61  vi /etc/sysconfig/network-scripts/ifcfg-ens192
+   62  systemctl restart network
+   63  nslookup masterdns
+   64  systemctl enable NetworkManager
+   65  systemctl status NetworkManager
+   66  clear
+   67  nslookup masterdns
+   68  systemctl restart network
+   69  systemctl restart named
+   70  nslookup masterdns
+   71  clear
+   72  nmtui
+   73  clear
+   74  systemctl start named
+   75  systemctl start NetworkManager
+   76  systemctl status NetworkManager
+   77  clear
+   78  nslookup masterdns
+   79  systemctl restart network
+   80  systemctl restart named
+   81  nslookup masterdns
+   82  clear
+   83  getenforce
+   84  setenforce 0
+   85  clear
+   86  systemctl status firewalld
+   87  systemctl stop firewalld
+   88  systemctl disabled firewalld
+   89  systemctl disable firewalld
+   90  ntpq -p
+   91  yum install -y ntp chrony
+   92  vi /etc/ntp.conf 
+   93  vi /etc/chrony.conf
+   94  systemctl start ntpd
+   95  systemctl enable ntpd
+   96  systemctl start chronyd
+   97  ntpq -p
+   98  chronyc sources
+   99  systemctl enable chronyd
+  100  timedatectl
+  101  clear
+  102  nslookup testpxe
+  103  nslookup tpxe
+  104  yum install -y rsync
+  105  ls
+  106  clear
+  107  ls
+  108  clear
+  109  yum info bind-utils
+  110  yum info bind-utils-lib
+  111  yum info bind-utils*
+  112  yum info bind9
+  113  yum info bind*
+  114  yum install -y bind*
+  115  clear
+  116  nslookup testpxe
+  117  clear
+  118  nslookup prdx-nfs15
+  119  nslookup nfs
+  120  clear
+  121  ls
+  122  ip a
+  123  vi /etc/resolv.conf
+  124  vi /etc/sysconfig/network-scripts/ifcfg-ens192
+  125  systemctl start ntpd
+  126  ntpq -p
+  127  clear
+  128  getenforce
+  129  clear
+  130  ls
+  131  cat dhcpd.conf/
+  132  cat dhcpd.conf
+  133  ls dhcpd.conf/
+  134  rm -rf dhcpd.conf
+  135  clear
+  136  su - ansible
+  137  clear
+  138  ls
+  139  cat dhcpd.sh 
+  140  clear
+  141  updatedb
+  142  clear
+  143  yum provides updatedb
+  144  clear
+  145  find * -name "pxelinux"
+  146  find -name "pxelinux"
+  147  find . -name "pxelinux"
+  148  find . -type f -name "pxelinux"
+  149  cat /etc/xinetd.conf
+  150  clear
+  151  ls
+  152  vim dhcpd.sh 
+  153  clear
+  154  history
+  155  ll
+  156  scp dhcpd.sh prdx-ansible15://ansible/history/pxe/
+  157  df -h
+  158  ll /
+  159  cd /s
+  160  cd /share/
+  161  df -h
+  162  cd 
+  163  history > pxehistory.txt

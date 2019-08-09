@@ -1,0 +1,106 @@
+    1  nmtui
+    2  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+    3  uname -r
+    4  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+    5  service restart network
+    6  service network restart
+    7  wget ftp://192.168.45.17/pub/SCRIPTS/nicestuff
+    8  yum install wget -y
+    9  wget ftp://192.168.45.17/pub/SCRIPTS/nicestuff
+   10  chmod +x nicestuff 
+   11  ./nicestuff 
+   12  man iptables
+   13  service iptables status
+   14  service ntpd status
+   15  man chkconfig
+   16  wget ftp://192.168.45.17/pub/SCRIPTS/nicestuff6
+   17  chmod +x nicestuff6
+   18  ./nicestuff6
+   19  wget ftp://192.168.45.17/pub/SCRIPTS/nicestuff6
+   20  rm -rf nicestuff6
+   21  rm -rf nicestuff
+   22  mv nicestuff6.1 nicestuff6
+   23  chmod +x nicestuff6 
+   24  ./nicestuff6 
+   25  yum update
+   26  yum clean all
+   27  yum update
+   28  man yum
+   29  yum --disable-repo=localrepo
+   30  ls /etc/yum.repos.d/
+   31  cd /etc/yum.repos.d/
+   32  mv local.repo local.bak
+   33  yum repolist
+   34  yum update
+   35  ls ~
+   36  history
+   37  ls
+   38  yum update
+   39  clear
+   40  cd
+   41  hostname -I
+   42  yum update
+   43  yum remove rpcbind
+   44  man yum
+   45  service rpcbind status
+   46  reboot
+   47  yum install haproxy
+   48  yum update
+   49  cat /etc/haproxy/haproxy.cfg 
+   50  cat /etc/fstab
+   51  ll /
+   52  ll /share/
+   53  rm -rf /share
+   54  ll /
+   55  showmount -e prdx-nfs15
+   56  ping prdx-nfs15
+   57  nmtui
+   58  cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+   59  cat /etc/resolv.conf
+   60  service network restart
+   61  service rpcbind status
+   62  ll /
+   63  ll /share/
+   64  cat /etc/fstab 
+   65  mount -a
+   66  journalctl -xe
+   67  tail /var/log/messages
+   68  yum install python
+   69  firewall-cmd
+   70  iptables --show-all
+   71  getenforce
+   72  setenforce 0
+   73  getenforce
+   74  tail /var/log/messages
+   75  ll /
+   76  ll /share/
+   77  yum update
+   78  ll /
+   79  ll /share
+   80  reboot
+   81  ping pxe
+   82  service haproxy status
+   83  vi /etc/haproxy/haproxy.cfg 
+   84  tail /etc/passwd
+   85  vi /etc/haproxy/haproxy.cfg 
+   86  rm -rf /etc/haproxy/.haproxy.cfg.swp
+   87  service haproxy restart
+   88  getenforce
+   89  iptables -nL
+   90  service stop iptables
+   91  service iptables stop
+   92  service iptables status
+   93  service iptables disable
+   94  man chkconfig
+   95  chkconfig --del iptables
+   96  man chkconfig
+   97  tail /etc/haproxy/haproxy.cfg
+   98  tail /etc/passwd
+   99  passwd haproxy
+  100  systemctl restart httpd
+  101  cat /etc/haproxy/haproxy.cfg
+  102  ssh prdx-nsmaster15
+  103  history
+  104  ls
+  105  cat install.log
+  106  history > haproxyhistory.txt

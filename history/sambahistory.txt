@@ -1,0 +1,277 @@
+    1  yum install -y samba*
+    2  setenforce 0
+    3  getenforce
+    4  firewall-cmd --permanent --add-service=samba
+    5  mkdir /sambashare
+    6  chmod 777 /sambashare
+    7  touch /sambashare/test_file
+    8  vi /etc/samba/smb.conf
+    9  testparm ## to test configuration
+   10  clear
+   11  useradd admin 
+   12  smbpasswd -a admib
+   13  smbpasswd -a admin
+   14  pbdedit -L
+   15  pdbedit -L
+   16  systemctl start smb nmb
+   17  systemctl enable smb nmb
+   18  ip a
+   19  vi /etc/samba/smb.conf
+   20  ssh-keygen
+   21  ls
+   22  nmtui
+   23  systemctl restart network
+   24  nslookup
+   25  yum install bind* ntp
+   26  nslookup
+   27  clear
+   28  ping 192.168.45.12
+   29  ping google.com
+   30  clear
+   31  history
+   32  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+   33  clear
+   34  ntpd -q
+   35  clear
+   36  timedatectl
+   37  vi /etc/ntp.conf 
+   38  systemctl restart ntpd
+   39  nmtui
+   40  bash
+   41  clear
+   42  updatedb
+   43  clear
+   44  nslookup
+   45  ntpq -p
+   46  clear
+   47  clear
+   48  getenforce
+   49  vi /etc/sysconfig/selinux
+   50  clear
+   51  firewall-cmd --list-all
+   52  clear
+   53  ls /sambashare/
+   54  getfacl /sambashare/
+   55  cat /etc/samba/smb.conf
+   56  clear
+   57  uname -r
+   58  uname -a
+   59  cat /etc/redhat-release 
+   60  ntpq -p
+   61  systemctl restart ntpd
+   62  ntpq -p
+   63  clear
+   64  ls /sambashare/
+   65  yum install -y wget
+   66  wget ftp://192.168.45.17/pub/nicestuff
+   67  ls
+   68  mv nicestuff /sambashare/
+   69  clear
+   70  ls
+   71  vi /sambashare/nicestuff 
+   72  vi /sambashare/nfsclientconf
+   73  vi /sambashare/nicestuff 
+   74  vi /sambashare/nfsclientconf
+   75  echo $HOSTNAME
+   76  vi /sambashare/nfsclientconf
+   77  echo $HOSTNAME | grep prdx
+   78  echo $HOSTNAME | grep -c prdx
+   79  echo $HOSTNAME | grep -w prdx
+   80  echo $HOSTNAME | grep -a prdx
+   81  echo $HOSTNAME | grep -b prdx
+   82  echo $HOSTNAME | grep -x prdx
+   83  echo $HOSTNAME | grep -n prdx
+   84  echo $HOSTNAME | grep -r prdx
+   85  echo $HOSTNAME | grep -t prdx
+   86  echo $HOSTNAME | grep -y prdx
+   87  clear
+   88  vi /sambashare/nfsclientconf
+   89  vi /sambashare/nicestuff 
+   90  cd /sambashare/
+   91  ls
+   92  vi nicestuff 
+   93  vi nfsclientconf 
+   94  vi nicestuff 
+   95  bash nicestuff 
+   96  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+   97  vi nicestuff 
+   98  bash nicestuff 
+   99  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  100  systemctl restart network
+  101  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  102  ls
+  103  vi nicestuff 
+  104  bash nicestuff 
+  105  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  106  vi nicestuff 
+  107  bash nicestuff 
+  108  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  109  vi nicestuff 
+  110  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  111  vi nicestuff 
+  112  bash nicestuff 
+  113  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  114  updatedb
+  115  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  116  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  117  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto | sed 's/none/static'
+  118  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  119  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto | sed "s/none/static"
+  120  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto | sed "/none/static"
+  121  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  122  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto | sed 's,none,static'
+  123  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  124  sed 's/none/static/' /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  125  cat /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  126  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  127  sed 's/none/static/g' /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto
+  128  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  129  sed 's/none/static/g' /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto >> /etc/sysconfig/network-scripts/ifcfg-ens192
+  130  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  131  sed 's/none/static/g' /etc/sysconfig/network-scripts/ifcfg-ens192 | grep -i bootproto > /etc/sysconfig/network-scripts/ifcfg-ens192
+  132  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  133  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+  134  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  135  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+  136  cat /etc/sysconfig/network-scripts/ifcfg-ens192 
+  137  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+  138  vi nicestuff 
+  139  clear
+  140  ls
+  141  vi nicestuff 
+  142  bash nfsclientconf
+  143  systemctl status firewalld
+  144  vi nfsclientconf
+  145  bash nfsclientconf
+  146  vi nfsclientconf
+  147  df -h
+  148  ls
+  149  vi nicestuff 
+  150  bash nicestuff 
+  151  ls
+  152  ntpq -p
+  153  cp nfsclientconf nicestuff /clientshare/
+  154  cd
+  155  mount
+  156  clear
+  157  mount -a
+  158  history
+  159  cd /sambashare/
+  160  ls
+  161  vi nicestuff 
+  162  vi nfsclientconf 
+  163  clear
+  164  ntpq -p
+  165  cd
+  166  clear
+  167  vi /clientshare/nicestuff 
+  168  ls /clientshare/
+  169  clear
+  170  ls /clientshare/
+  171  clear
+  172  ls /clientshare/
+  173  clear
+  174  ntpq -p
+  175  clear
+  176  vi /etc/ntp.conf 
+  177  ls /clientshare/
+  178  ntpq -p
+  179  systemctl restart ntpd
+  180  ntpq -p
+  181  vi /etc/ntp.conf 
+  182  ntpq -p
+  183  firewall-cmd --lsit-all
+  184  firewall-cmd --list-all
+  185  clear
+  186  bash /clientshare/nicestuff 
+  187  ntpq -p
+  188  yum remove -y ntpd
+  189  yum remove -y ntp
+  190  rm -rf /etc/ntp.conf.rpmsave
+  191  cd /clientshare 
+  192  ./nicestuff 
+  193  ntpq -p
+  194  systemctl restart ntpd
+  195  ntpq -p
+  196  clear
+  197  ntpq -p
+  198  ls
+  199  clear
+  200  ls /clientshare
+  201  systemctl status nfs
+  202  systemctl start nfs
+  203  systemctl status nfs
+  204  yum remove -y nfs
+  205  yum remove -y nfs-utils nfs-utils-lib
+  206  rm -rf /var/lib/nfs/
+  207  sudo rm -rf /var/lib/nfs/
+  208  clear
+  209  rm -rf /clientshare 
+  210  rm -rf /clientshare* 
+  211  rmdir /clientshare 
+  212  df -h
+  213  umount /clientshare
+  214  rm -rf /clientshare
+  215  clear
+  216  vi /etc/exports 
+  217  clear
+  218  vi /etc/fstab 
+  219  clear
+  220  yum install -y nfs-utils nfs-utils-lib
+  221  clear
+  222  mkdir /clientshare
+  223  clear
+  224  systemctl enable rpcbind && systemctl start rpcbind
+  225  systemctl enable nfs-server && systemctl start nfs-server
+  226  systemctl enable nfs-lock && systemctl start nfs-lock
+  227  systemctl enable nfs-idmap && systemctl start nfs-idmap
+  228  mount -t nfs prdx-nfs15:/var/nfsshare /clientshare
+  229  vi /etc/fstab
+  230  mount -a
+  231  ls /clientshare/
+  232  clear
+  233  ls /clientshare
+  234  ls /clientshare/
+  235  rm -rf /clientshare/1
+  236  clear
+  237  ls /clientshare/
+  238  ls
+  239  ls /clientshare
+  240  clear
+  241  ip a
+  242  clear
+  243  ns
+  244  nslookup 
+  245  clear
+  246  df -h
+  247  ll /
+  248  rm -rf /share
+  249  tail /etc/passwd
+  250  history
+  251  df -h
+  252  ssh root@192.168.45.20
+  253  ssh root@192.168.45.21
+  254  ssh root@192.168.45.22
+  255  ssh root@192.168.45.10
+  256  cd /sambashare/
+  257  ls
+  258  systemctl start smb
+  259  systemctl enable smb
+  260  ftp ftp
+  261  ftp prdx-ftp15
+  262  sftp prdx-ftp15
+  263  ssh db156
+  264  systemctl start samba
+  265  systemctl start smb nmb
+  266  systemctl enable smb nmb
+  267  getenforce
+  268  systemctl status firewalld
+  269  cd /sambashare/
+  270  ls
+  271  ssh root@prdx-webserver156
+  272  tail /etc/passwd
+  273  nslookup prdx-haproxy15
+  274  nslookup prdx-haproxy156
+  275  nslookup prdx-haproxy157
+  276  ssh prdx-haproxy156
+  277  history > samba

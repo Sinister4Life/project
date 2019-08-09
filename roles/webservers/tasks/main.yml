@@ -13,10 +13,10 @@
     - ansible_os_family == 'RedHat'
     - ansible_distribution_major_version == '6'
 
-  - name: deploy apache html into $HOSTNAME
-    template: 
-      src: index.html 
-      dest: /var/www/html/index.html
+#  - name: deploy apache html into $HOSTNAME
+#    template: 
+#      src: index.html 
+#      dest: /var/www/html/index.html
 
   - name: configure conf file
     shell: echo "ServerName $HOSTNAME" >> httpd.conf
@@ -24,8 +24,50 @@
       chdir: /etc/httpd/conf/
       executable: /bin/bash
 
+# Create website
+#  - name: Install modwsgi and epel
+#    yum:
+#      name: mod_wsgi
+#      state: latest
+#      name: epel-release
+#      state: latest
+#
+#  - name: wsgi template
+#    template:
+#      src: purrfect.wsgi
+#      dest: /var/www/purrfect
+#
+#  - name: install python3
+#    yum:
+#      name: python36
+#      state: latest
+#  - name: copy web files
+#    copy:
+#      src: files/purrfect/purrfect/templates/
+#      dest: /var/www/html
+#  - name: cpy
+#    copy:
+#      src: files/purrfect/purrfect/static/
+#      dest: /var/www/static
+
+#  - name: delete 
+#    file:
+#      path: /var/www/html/index.html
+#      state: absent
+
+  - name: html
+    copy:
+      src: templates/index.html
+      dest: /var/www/html/index.html
+  - name: css  
+    copy:
+      src: templates/purrfect.css
+      dest: /var/www/html/purrfect.css
+
   - name: reload httpd
     service:
       name: httpd
       state: reloaded
-      enabled: yes 
+      enabled: yes
+
+
