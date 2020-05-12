@@ -1,6 +1,6 @@
 ---
 - name: configure nfs server
-  hosts: NFS
+  hosts: nfs_server
   user: ansible
   become: true
 

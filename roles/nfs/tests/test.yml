@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: nfs_server
+  remote_user: ansible
+  become: true
   roles:
     - nfs
