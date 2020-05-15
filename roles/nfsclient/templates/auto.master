@@ -1,2 +1,2 @@
-/var /etc/auto.share
+/nfs /etc/auto.share
 /home/ldap /etc/home.map
